@@ -1,18 +1,24 @@
 import React from 'react';
-import {profileImg} from '../assets/images';
+import {profileImg} from '../assets/images/index.js';
 import './HeroSection.css'
-import {projects, techStack} from "../constant/data.js";
+import {techStack} from "../constant/data.js";
 import ContactForm from "../constant/ContactForm.jsx";
+import {ImageSlider} from "./index.js";
+import 'boxicons'
 
 const HeroSection = () => {
     return (
-        <div className="heroSection">
-            <section>
-                <div className='introSection'>
-                    <div className=''>
-                        <h2 className='textPresetXL'>Hi, <br/>I’m Omoh Imobu,</h2>
-                        <h6 className='intro-text textPreset1Med'>a developer based in the Philippines. I enjoy building modern web applications that are fast, scalable, and user-friendly. Most of my work revolves around React, Next.js, and TypeScript, but I’m always exploring new tools and ways to make the web better. When I’m not coding, I’m usually learning something new, experimenting with design ideas, or improving projects I’ve already built.</h6>
-                        <h5>contact me</h5>
+        <>
+            <section className="intro-part">
+                    <div className='side-text'>
+                        <h2 className='welcome textPresetXL'>Hi, I’m Omoh Imobu</h2>
+                        <h4 className='textPresetL'>Software Developer</h4>
+                        <p className='intro-text textPreset1Med'>a developer based in the Philippines. I enjoy building modern web applications that are fast, scalable, and user-friendly. Most of my work revolves around React, Next.js, and TypeScript, but I’m always exploring new tools and ways to make the web better. When I’m not coding, I’m usually learning something new, experimenting with design ideas, or improving projects I’ve already built.</p>
+                        <div className='btn-box textPreset1Med'>
+                            <a href="#">contact me</a>
+                            <a href="#">Let's Talk</a>
+                        </div>
+
                     </div>
 
                     {/*<Image src='/next.svg' alt='my image' />*/}
@@ -25,10 +31,16 @@ const HeroSection = () => {
                         // height={38}
                         // priority
                     />
-                </div>
+                    {/*<div className='home-sci'>*/}
+                    {/*    <a href="#"><box-icon type='logo' name="linkedin"/></a>*/}
+                    {/*    <a href="#"><box-icon type='logo' name="facebook"/></a>*/}
+                    {/*    /!*<a href="#"></a>*!/*/}
+                    {/*</div>*/}
+
+                <span className='home-imgHover'></span>
             </section>
 
-            <section>
+            <section className='stack-part'>
                 <div className='stack-section'>
                     {
                         techStack.map((item, index) => {
@@ -43,32 +55,33 @@ const HeroSection = () => {
                 </div>
             </section>
 
-            <section>
+            <section className='project-part'>
                 <div className='project-Section'>
                     <div className='project-subtitle'>
                         <h2>Project</h2>
                         <h5>Contact Mw</h5>
                     </div>
                     <div className='projectList'>
-                        {
-                            projects.map((item, index) => {
-                                return (
-                                    <div key={index} className='project-item'>
-                                        <img src={item.image}
-                                               alt={item.title}
-                                             className='projectImage'
-                                        />
-                                        <p className='textPresetBold'>{(item.title).toUpperCase()}</p>
-                                        <p>{item.language}</p>
-                                    </div>
-                                )
-                            })
-                        }
+                        <ImageSlider/>
+                        {/*{*/}
+                        {/*    projects.map((item, index) => {*/}
+                        {/*        return (*/}
+                        {/*            <div key={index} className='project-item'>*/}
+                        {/*                <img src={item.image}*/}
+                        {/*                       alt={item.title}*/}
+                        {/*                     className='projectImage'*/}
+                        {/*                />*/}
+                        {/*                <p className='textPresetBold'>{(item.title).toUpperCase()}</p>*/}
+                        {/*                <p>{item.language}</p>*/}
+                        {/*            </div>*/}
+                        {/*        )*/}
+                        {/*    })*/}
+                        {/*}*/}
                     </div>
                 </div>
             </section>
 
-            <section>
+            <section className='contact-part'>
                 <div className='contact-Section'>
                     <div className='contact-subtitle'>
                         <h2 className='textPresetL'>Contact</h2>
@@ -80,7 +93,7 @@ const HeroSection = () => {
                 </div>
             </section>
 
-        </div>
+        </>
 
     );
 };

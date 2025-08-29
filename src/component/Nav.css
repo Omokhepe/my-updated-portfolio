@@ -1,18 +1,39 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+
+}
 .nav{
     display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 99;
+    /*position: sticky;*/
+    /*top: 0;*/
+
     justify-content: space-around;
     /*color: var(--colorNeutral900);*/
     align-items: center;
     height: 70px;
     padding-top: 20px;
     transition: all .50s ease;
+    background-color: var(--deep-steel);
 }
 .navTitle{
+    position: relative;
     text-decoration: none;
     color: var(--colorGrey);
+}
+.navTitle::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--deep-steel);
+    animation: showRight 1s ease forwards;
+    animation-delay: .4s;
 }
 .navLabel{
     display: flex;
@@ -24,8 +45,15 @@
     }
 }
 .navLink.active{
-    /*color: var(--colorOrange500);*/
+    color: var(--plum);
 }
 .nav-btn:hover{
     transform: scale(1.1);
+}
+
+/*KEYFRAMES ANIMATION*/
+@keyframes showRight {
+    100%{
+        width: 0;
+    }
 }

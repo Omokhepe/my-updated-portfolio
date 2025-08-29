@@ -4,9 +4,9 @@ import './Nav.css'
 
 const Nav = () => {
     return (
-        <header>
+        <header className="header">
             <nav className="nav">
-                <a href="/" className='navTitle textPresetBold'>
+                <a href="/client/public" className='navTitle textPresetBold'>
                     Omoh Imobu
                 </a>
                 <ul className="navLabel textPreset1Med">

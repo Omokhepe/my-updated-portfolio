@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #151515;
+  background-color: #C9C8BF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,11 +16,30 @@
     --colorGreen: #4EE1A0;
     --colorAsh: #242424;
     --colorGrey: #d9d9d9;
-    --colorWhite: #FFFFFF;
+    /*--colorWhite: #FFFFFF;*/
     --primary: #11998e;
     --secondary: #38ef7d;
     --white: #fff;
     --gray: #9b9b9b;
+
+    --deep-steel: #2C3E50;
+    --plum: #673147;
+    --artichoke: #8F9779;
+    --crimson: #A61C3C;
+
+    /*Dark text color*/
+    --colorWhite: #FFFFFF;
+    --darkSecondary: #D1D5DB;
+    --darkMute: #9CA3AF;
+
+    --darkAccent: #A855F7;
+    --darkCallToAction: #F59E0B;
+    --darkBtnPrimary: #2563EB;
+    --darkBtnSecondary: #4B5563;
+    --darkBtnHover: #1D4ED8;
+
+
+
 
 }
 

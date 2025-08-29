@@ -1,4 +1,6 @@
-import {simpleEasyPortfolio, e_learning, movie_stream, healthMeal} from '../assets/images'
+import {simpleEasyPortfolio, e_learning, movie_stream, healthMeal, todo,
+    game,
+    imagesShow} from '../assets/images/index.js'
 
 export const navLinks = [
     { href: "/", label: "Home" },
@@ -64,29 +66,29 @@ export const projects = [
         site: 'https://healthy-recipe.vercel.app/',
         image: simpleEasyPortfolio,
     },
-    // {
-    //     id: 1,
-    //     title: 'Healthy Food App',
-    //     description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
-    //     site: 'https://healthy-recipe.vercel.app/',
-    //     image: '/healthMeal.jpg',
-    // },{
-    //     id: 1,
-    //     title: 'Healthy Food App',
-    //     description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
-    //     site: 'https://healthy-recipe.vercel.app/',
-    //     image: '/healthMeal.jpg',
-    // },{
-    //     id: 1,
-    //     title: 'Healthy Food App',
-    //     description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
-    //     site: 'https://healthy-recipe.vercel.app/',
-    //     image: '/healthMeal.jpg',
-    // },{
-    //     id: 1,
-    //     title: 'Healthy Food App',
-    //     description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
-    //     site: 'https://healthy-recipe.vercel.app/',
-    //     image: '/healthMeal.jpg',
-    // },
+    {
+        id: 1,
+        title: 'Healthy Food App',
+        description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
+        site: 'https://healthy-recipe.vercel.app/',
+        image: movie_stream,
+    },{
+        id: 1,
+        title: 'Healthy Food App',
+        description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
+        site: 'https://healthy-recipe.vercel.app/',
+        image: todo,
+    },{
+        id: 1,
+        title: 'Healthy Food App',
+        description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
+        site: 'https://healthy-recipe.vercel.app/',
+        image: game,
+    },{
+        id: 1,
+        title: 'Healthy Food App',
+        description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
+        site: 'https://healthy-recipe.vercel.app/',
+        image: imagesShow,
+    },
 ]

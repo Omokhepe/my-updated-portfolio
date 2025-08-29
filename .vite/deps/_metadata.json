@@ -1,0 +1,43 @@
+{
+  "hash": "6625dfaa",
+  "configHash": "49576c42",
+  "lockfileHash": "e79b455a",
+  "browserHash": "4308ce14",
+  "optimized": {
+    "@emailjs/browser": {
+      "src": "../../node_modules/@emailjs/browser/es/index.js",
+      "file": "@emailjs_browser.js",
+      "fileHash": "343e3225",
+      "needsInterop": false
+    },
+    "@gradio/client": {
+      "src": "../../node_modules/@gradio/client/dist/browser.js",
+      "file": "@gradio_client.js",
+      "fileHash": "17fc6e11",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "c02ced41",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f9c04285",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-I7K6YDV4": {
+      "file": "chunk-I7K6YDV4.js"
+    },
+    "__vite-browser-external-DYxpcVy9-QN3633GV": {
+      "file": "__vite-browser-external-DYxpcVy9-QN3633GV.js"
+    },
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
+    }
+  }
+}
