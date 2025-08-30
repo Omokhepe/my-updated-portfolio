@@ -1,57 +1,84 @@
-import { useState } from "react";
-import { client } from "@gradio/client";
+import React, {useEffect, useRef, useState} from "react";
+import { Client } from "@gradio/client";
+import 'boxicons'
+import ChatbotIcon from "../constant/ChatbotIcon.jsx";
+import {ChatForm, ChatMessage} from "./index.js";
 
-export default function Chatbot() {
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
-    const [loading, setLoading] = useState(false);
+export default function Chatbot({showChat, setShowChat}) {
+    const [chatHistory, setChatHistory] = useState([]);
+    const chatBodyRef = useRef();
 
-    const askAI = async () => {
+
+    const generateBotResponse = async (history) =>{
+
+        const updateHistory = (text, isError = false) => {
+            setChatHistory((prevState) => [...prevState.filter((msg)=> msg.text !== 'Thinking ...'), {role: 'model', text, isError}]);
+        }
+
+        //This cleans the question that calls the bot API
+        const userChat = history.filter(msg => msg.role === 'user').pop()?.text || '';
+
         try {
-            setLoading(true);
-            // const app = await client("https://omohkhepe/career_conversation.hf.space/");
-            const app = await client("https://omohkhepe-career-conversation.hf.space/");
-            // const app = await client("https://huggingface.co/spaces/omohkhepe/");
-            console.log(app.view_api)
-
-            const result = await app.predict("/predict", {
-                question: question, // match input key from backend
+            const client = await Client.connect("omohkhepe/career_conversation");
+            const result = await client.predict("/chat", {
+                message: userChat,
             });
 
-            setAnswer(result.data[0]); // adjust based on output structure
+            const apiTextResponse = result.data[0].replace(/\*\*(.*?)\*\*/g, "$1").trim();
+
+            updateHistory(apiTextResponse)
+
         } catch (error) {
-            console.log('there', error)
-            setAnswer("⚠️ Something went wrong. Please try again.");
-        } finally {
-            console.log('here')
-            setLoading(false);
+            updateHistory(error.message, true);
+            // console.log('there', error)
+            // setAnswer("⚠️ Something went wrong. Please try again.");
         }
-    };
+    }
+
+    useEffect(() => {
+        chatBodyRef.current.scrollTo({top: chatBodyRef.current.scrollHeight, behavior: 'smooth'});
+    })
+
 
     return (
-        <div className="max-w-lg mx-auto p-4 bg-white rounded-2xl shadow">
-            <h2 className="text-xl font-bold mb-2">Ask Me Anything</h2>
-
-            <textarea
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Ask about my experience, projects, or skills..."
-                className="w-full p-2 border rounded mb-2"
-            />
-
-            <button
-                onClick={askAI}
-                disabled={loading}
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-            >
-                {loading ? "Thinking..." : "Ask"}
+        <div className={`container ${showChat ? 'showChat' : ''}`}>
+            <button id="chatbot-toggle" onClick={() => setShowChat(prevState => !prevState)}>
+                <span className="material-symbols-outlined">mode_comment</span>
+                <span className="material-symbols-outlined">close</span>
             </button>
-
-            {answer && (
-                <div className="mt-4 p-2 border rounded bg-gray-50">
-                    <strong>AI:</strong> {answer}
+            <div className='chatbox-popup'>
+                {/*Chatbot Header*/}
+                <div className='chatbox-header'>
+                    <div className='header-info'>
+                        <ChatbotIcon/>
+                        <h2 className='logo-text textPresetBold textMargin'>Chatbot</h2>
+                    </div>
+                    {/*<img src={down_arrow}/>*/}
+                    <button onClick={() => setShowChat(prevState => !prevState)}
+                            className="material-symbols-outlined">keyboard_arrow_down</button>
                 </div>
-            )}
+
+                {/*Chatbot Body*/}
+                <div ref={chatBodyRef} className='chat-body'>
+                    <div className='message bot-message'>
+                        <ChatbotIcon/>
+                        <p className="message-text textPreset1Med textMargin">
+                            Hey there <br/> How can I help you today?
+                        </p>
+                    </div>
+
+                    {/*Renders Chat histoy Dynammically*/}
+                    {
+                        chatHistory.map((chat, index) => (
+                            <ChatMessage chat={chat} key={index} />
+                        ))
+                    }
+                </div>
+                {/*Chatbot Footer*/}
+                <div className="chat-footer">
+                   <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateBotResponse={generateBotResponse}/>
+                </div>
+            </div>
         </div>
     );
 }

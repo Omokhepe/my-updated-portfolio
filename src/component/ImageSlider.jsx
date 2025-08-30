@@ -41,7 +41,7 @@ export default function ImageSlider() {
                     alt={`main-${mainIndex}`}
                     className="main-img"
                 />
-                <p className="desc">{projects[mainIndex].description}</p>
+                <p className="textPreset1Med desc">{projects[mainIndex].description}</p>
             </div>
 
             <div className="slider">
@@ -54,6 +54,7 @@ export default function ImageSlider() {
                         // <img key={i} src={src} alt={`slide-${i}`} />
                         return (
                             <img
+                                key={i}
                                 src={src.image}
                                 alt={src.title}
                                 className="thumb"
@@ -64,8 +65,8 @@ export default function ImageSlider() {
                     })}
                 </div>
 
-                <button className="prev" onClick={prevSlide}>❮</button>
-                <button className="next" onClick={nextSlide}>❯</button>
+                <button className="btn-prev prev" onClick={prevSlide}>❮</button>
+                <button className="btn-prev next" onClick={nextSlide}>❯</button>
 
                 <div className="dots">
                     {otherImages.map((_, i) => (

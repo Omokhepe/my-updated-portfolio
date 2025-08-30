@@ -1,12 +1,15 @@
-import React from 'react';
-import {profileImg} from '../assets/images/index.js';
+import React, {useState} from 'react';
+import {down_arrow, profileImg} from '../assets/images/index.js';
 import './HeroSection.css'
 import {techStack} from "../constant/data.js";
-import ContactForm from "../constant/ContactForm.jsx";
-import {ImageSlider} from "./index.js";
+import {Chatbot, ImageSlider, ContactForm} from "./index.js";
 import 'boxicons'
+import ChatbotIcon from "../constant/ChatbotIcon.jsx";
+import './Chatbot.css';
 
 const HeroSection = () => {
+    const [showChat, setShowChat] = useState(false);
+
     return (
         <>
             <section className="intro-part">
@@ -15,8 +18,8 @@ const HeroSection = () => {
                         <h4 className='textPresetL'>Software Developer</h4>
                         <p className='intro-text textPreset1Med'>a developer based in the Philippines. I enjoy building modern web applications that are fast, scalable, and user-friendly. Most of my work revolves around React, Next.js, and TypeScript, but I’m always exploring new tools and ways to make the web better. When I’m not coding, I’m usually learning something new, experimenting with design ideas, or improving projects I’ve already built.</p>
                         <div className='btn-box textPreset1Med'>
-                            <a href="#">contact me</a>
-                            <a href="#">Let's Talk</a>
+                            <a href="#contact-me">contact me</a>
+                            <a href="#" onClick={() => setShowChat(prevState => !prevState)}>Let's Talk</a>
                         </div>
 
                     </div>
@@ -55,33 +58,19 @@ const HeroSection = () => {
                 </div>
             </section>
 
-            <section className='project-part'>
+            <section id='projects' className='project-part'>
                 <div className='project-Section'>
                     <div className='project-subtitle'>
-                        <h2>Project</h2>
-                        <h5>Contact Mw</h5>
+                        <h2 className='textPresetL'>Project</h2>
+                        <a href="#contact-me" className='textPreset1Med'>Contact Me</a>
                     </div>
                     <div className='projectList'>
                         <ImageSlider/>
-                        {/*{*/}
-                        {/*    projects.map((item, index) => {*/}
-                        {/*        return (*/}
-                        {/*            <div key={index} className='project-item'>*/}
-                        {/*                <img src={item.image}*/}
-                        {/*                       alt={item.title}*/}
-                        {/*                     className='projectImage'*/}
-                        {/*                />*/}
-                        {/*                <p className='textPresetBold'>{(item.title).toUpperCase()}</p>*/}
-                        {/*                <p>{item.language}</p>*/}
-                        {/*            </div>*/}
-                        {/*        )*/}
-                        {/*    })*/}
-                        {/*}*/}
                     </div>
                 </div>
             </section>
 
-            <section className='contact-part'>
+            <section id='contact-me' className='contact-part'>
                 <div className='contact-Section'>
                     <div className='contact-subtitle'>
                         <h2 className='textPresetL'>Contact</h2>
@@ -92,6 +81,7 @@ const HeroSection = () => {
                     <ContactForm />
                 </div>
             </section>
+            <Chatbot showChat={showChat} setShowChat={setShowChat} />
 
         </>
 

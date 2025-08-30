@@ -4,6 +4,9 @@
     /*background-color: var(--deep-steel);*/
 
 }
+section{
+    min-height: 100vh;
+}
 .intro-part {
     background-color: var(--deep-steel);
     /*background: #2F303A;*/
@@ -205,7 +208,7 @@
     background-color: var(--deep-steel);
     /*background-color: #30333F;*/
     margin: 0 auto;
-    display: flex;             /* make parent flex */
+    /*display: flex;             !* make parent flex *!*/
     justify-content: center;
     padding-top: 50px;
 }
@@ -235,6 +238,7 @@
 .project-subtitle{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .projectList{
     display: flex;

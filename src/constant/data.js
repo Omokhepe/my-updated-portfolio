@@ -4,8 +4,8 @@ import {simpleEasyPortfolio, e_learning, movie_stream, healthMeal, todo,
 
 export const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact Me" },
+    { href: "#projects", label: "Project" },
+    { href: "#contact-me", label: "Contact Me" },
 ];
 
 export const techStack = [

@@ -38,17 +38,19 @@
 .navLabel{
     display: flex;
     list-style-type: none;
-    li{
-        text-decoration: none;
-        /*color: var(--colorNeutral900);*/
-        margin-right: 48px;
-    }
+}
+.navLink  a{
+    margin-right: 48px;
+    text-decoration: none;
+    color: var(--colorGrey);
+    transition: .3s;
 }
 .navLink.active{
     color: var(--plum);
 }
-.nav-btn:hover{
+.navLink a:hover{
     transform: scale(1.1);
+    color: var(--darkBtnPrimary);
 }
 
 /*KEYFRAMES ANIMATION*/

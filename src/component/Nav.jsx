@@ -12,7 +12,7 @@ const Nav = () => {
                 <ul className="navLabel textPreset1Med">
                     {
                         navLinks.map((link, index) => (
-                            <li key={index} className='navLink'>{link.label}</li>
+                            <li key={index} className='navLink'><a href={link.href}>{link.label}</a></li>
                         ))
                     }
                 </ul>

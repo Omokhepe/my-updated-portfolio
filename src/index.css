@@ -37,7 +37,7 @@
     --darkBtnPrimary: #2563EB;
     --darkBtnSecondary: #4B5563;
     --darkBtnHover: #1D4ED8;
-
+    --softCream: #F2E9E4;
 
 
 
@@ -89,6 +89,9 @@ body {
     font-size: 18px;
     /*margin: 0;*/
 }
+ .textMargin{
+     margin: 5px;
+ }
 
 
 
