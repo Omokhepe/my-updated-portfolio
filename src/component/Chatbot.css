@@ -103,8 +103,8 @@
 }
 .flow-text{
     position: fixed;
-    bottom: 90px;
-    right: 130px;
+    bottom: 30px;
+    right: 30px;
     color: var(--cream);
     display: inline-block;
     /*font-size: 2.5rem;*/

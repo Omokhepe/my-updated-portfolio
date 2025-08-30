@@ -63,7 +63,7 @@ const HeroSection = () => {
             </section>
 
             {/*<section id='contact-me' className='contact-part'>*/}
-                <div className='contact-Section'>
+                <div id='contact-me' className='contact-Section'>
                     <div className='contact-subtitle'>
                         <h2 className='textPresetXL textMargin'>Contact</h2>
                         <p className='textPreset1Med'>
