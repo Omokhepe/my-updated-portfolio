@@ -41,15 +41,21 @@ export default function ImageSlider() {
                     alt={`main-${mainIndex}`}
                     className="main-img"
                 />
+                <a href={projects[mainIndex].site} target="_blank" className="overlay">
+                    <div className="overlay-content">
+                        <span className="material-symbols-outlined">link</span>
+                        <span className="text">View Project</span>
+                    </div>
+                </a>
                 <p className="textPreset1Med desc">{projects[mainIndex].description}</p>
             </div>
 
             <div className="slider">
                 <div
                     className="slides"
-                    style={{ transform: `translateX(-${index * 100}%)` }}
+                    style={{transform: `translateX(-${index * 100}%)`}}
                 >
-                    {otherImages.map((src, i) => {
+                {otherImages.map((src, i) => {
                         const actualIndex = projects.findIndex((x) => x.image === src.image);
                         // <img key={i} src={src} alt={`slide-${i}`} />
                         return (

@@ -30,7 +30,7 @@ export default function Chatbot({showChat, setShowChat}) {
 
         } catch (error) {
             updateHistory(error.message, true);
-            // console.log('there', error)
+            console.log('there', error)
             // setAnswer("⚠️ Something went wrong. Please try again.");
         }
     }

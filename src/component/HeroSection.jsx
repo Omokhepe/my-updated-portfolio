@@ -43,20 +43,18 @@ const HeroSection = () => {
                 <span className='home-imgHover'></span>
             </section>
 
-            <section className='stack-part'>
-                <div className='stack-section'>
-                    {
-                        techStack.map((item, index) => {
-                            return (
-                                <div key={index} className='stackList'>
-                                    <h3 className='textPresetL'>{item.stack}</h3>
-                                    <h6 className='textPreset1Med'>{item.years} Years Experience</h6>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </section>
+            <div className='stack-section'>
+                {
+                    techStack.map((item, index) => {
+                        return (
+                            <div key={index} className='stackList'>
+                                <h3 className='textPresetL'>{item.stack}</h3>
+                                <h6 className='textPreset1Med'>{item.years} Years Experience</h6>
+                            </div>
+                        )
+                    })
+                }
+            </div>
 
             <section id='projects' className='project-part'>
                 <div className='project-Section'>
@@ -70,8 +68,8 @@ const HeroSection = () => {
                 </div>
             </section>
 
-            <section id='contact-me' className='contact-part'>
-                <div className='contact-Section'>
+            {/*<section id='contact-me' className='contact-part'>*/}
+                <div id='contact-me' className='contact-Section'>
                     <div className='contact-subtitle'>
                         <h2 className='textPresetL'>Contact</h2>
                         <p className='textPreset1Med'>
@@ -80,7 +78,8 @@ const HeroSection = () => {
                     </div>
                     <ContactForm />
                 </div>
-            </section>
+            {/*</section>*/}
+
             <Chatbot showChat={showChat} setShowChat={setShowChat} />
 
         </>

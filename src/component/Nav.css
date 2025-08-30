@@ -50,7 +50,7 @@
 }
 .navLink a:hover{
     transform: scale(1.1);
-    color: var(--darkBtnPrimary);
+    color: var(--cream);
 }
 
 /*KEYFRAMES ANIMATION*/

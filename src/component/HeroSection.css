@@ -5,22 +5,29 @@
 
 }
 section{
-    min-height: 100vh;
+    min-height: 80vh;
 }
 .intro-part {
     background-color: var(--deep-steel);
-    /*background: #2F303A;*/
-    /*margin: 0 auto;*/
-    /*display: flex;             !* make parent flex *!*/
-    /*justify-content: center;   !* center child horizontally *!*/
-    /*padding-top: 70px;*/
     display: flex;
     align-items: center;
     padding: 70px 15% 0;
 }
+.intro-part::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 40%;
+    height: 100%;
+    background-image: url("/src/assets/images/pattern-rings.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain; /* or cover */
+    z-index: 0;
+}
 .introSection{
     display: flex;
-    /*max-width: 1400px;*/
     justify-content: space-between;
 }
 .side-text{
@@ -44,7 +51,7 @@ section{
 .side-text h4{
     position: relative;
     margin: 0;
-    color: var(--darkAccent);
+    color: var(--cream);
     /*position: relative;*/
 }
 .side-text h4::before{
@@ -98,27 +105,27 @@ section{
     align-items: center;
     width: 150px;
     height: 50px;
-    background-color: var(--darkBtnPrimary);
-    border: 2px solid var(--darkBtnPrimary);
+    background-color: var(--cream);
+    border: 2px solid var(--cream);
     border-radius: 8px;
-    color: var(--darkSecondary);
+    color: var(--plum);
     text-decoration: none;
     z-index: 1;
     overflow: hidden;
     transition: 1s;
 }
 .btn-box a:hover{
-    color: var(--darkBtnPrimary);
+    color: var(--cream);
 }
 .btn-box a:nth-child(2){
     background: transparent;
-    color: var(--darkBtnPrimary);
+    color: var(--cream);
 }
 .btn-box a:nth-child(2):hover{
-    color: var(--darkSecondary);
+    color: var(--plum);
 }
 .btn-box a:nth-child(2)::before{
-    background: var(--darkBtnPrimary);
+    background: var(--cream);
 }
 .btn-box a::before{
     content: "";
@@ -215,10 +222,14 @@ section{
 .stack-section{
     display: flex;
     justify-content: space-around;
+    background-color: var(--deep-steel);
     /*max-width: 1200px;*/
     /*margin: 50px auto;*/
     flex-wrap: wrap;
     padding: 0 8%;
+}
+.stack-section h3{
+    color: var(--cream);
 }
 .stackList{
     width: 400px;
@@ -233,12 +244,19 @@ section{
     margin: 0 auto;
     display: flex;             /* make parent flex */
     justify-content: center;   /* center child horizontally */
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 .project-subtitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.project-subtitle a{
+    text-decoration: none;
+    color: var(--off-white);
+}
+.project-subtitle a:hover{
+    color: var(--cream);
 }
 .projectList{
     display: flex;
