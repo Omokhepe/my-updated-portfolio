@@ -33,14 +33,14 @@
     display: flex;
     cursor: pointer;
     border-radius: 50%;
-    background-color: var(--plum);
+    background-color: var(--cream);
     align-items: center;
     justify-content: center;
     transition: all .2s ease;
 }
 #chatbot-toggle span{
     position: absolute;
-    color: var(--artichoke);
+    color: var(--plum);
 }
 .showChat #chatbot-toggle{
     transform: rotate(90deg);
@@ -93,7 +93,7 @@
 .chat-body{
     display: flex;
     flex-direction: column;
-    margin-bottom: 82px;
+    margin-bottom: 30px;
     gap: 20px;
     height: 460px;
     overflow-y: auto;

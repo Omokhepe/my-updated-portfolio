@@ -1,8 +1,4 @@
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
 import "./ImageSlider.css";
 import {projects} from "../constant/data.js";
 
@@ -17,16 +13,14 @@ export default function ImageSlider() {
     const [mainIndex, setMainIndex] = useState(0);
     const [index, setIndex] = useState(0);
 
+    const otherImages = projects.filter((_, i) => i !== mainIndex);
     const prevSlide = () => {
-        setIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+        setIndex((prev) => (prev === 0 ? otherImages.length - 1 : prev - 1));
     };
 
     const nextSlide = () => {
-        setIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+        setIndex((prev) => (prev === otherImages.length - 1 ? 0 : prev + 1));
     };
-
-
-    const otherImages = projects.filter((_, i) => i !== mainIndex);
 
     const handleClick = (clickedIndex) => {
         setMainIndex(clickedIndex);
@@ -36,17 +30,20 @@ export default function ImageSlider() {
         <div className="gallery">
             {/* Row 1: Main Image with Description */}
             <div className="main-display">
-                <img
-                    src={projects[mainIndex].image}
-                    alt={`main-${mainIndex}`}
-                    className="main-img"
-                />
-                <a href={projects[mainIndex].site} target="_blank" className="overlay">
-                    <div className="overlay-content">
-                        <span className="material-symbols-outlined">link</span>
-                        <span className="text">View Project</span>
-                    </div>
-                </a>
+                <div className="image-slider">
+                    <img
+                        src={projects[mainIndex].image}
+                        alt={`main-${mainIndex}`}
+                        className="main-img"
+                    />
+                    <a href={projects[mainIndex].site} target="_blank" className="overlay">
+                        <div className="overlay-content">
+                            <span className="material-symbols-outlined">link</span>
+                            <span className="text">View Project</span>
+                        </div>
+                    </a>
+                </div>
+
                 <p className="textPreset1Med desc">{projects[mainIndex].description}</p>
             </div>
 

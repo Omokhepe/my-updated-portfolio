@@ -146,6 +146,34 @@ section{
     /*mix-blend-mode: luminosity;*/
     margin-left: 70px;
 }
+
+.home-imgHover{
+    position: absolute;
+    top: 70px;
+    right: 270px;
+    width: 470px;
+    height: 70%;
+    background: transparent;
+    transition: 3s;
+
+}
+.home-imgHover:hover{
+    background: var(--deep-steel);
+    opacity: 0.8;
+}
+.home-imgHover::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--deep-steel);
+    animation: showRight 1s ease forwards;
+    animation-delay: 2s;
+    z-index: 2;
+}
+
 .home-sci{
     /*background-color: red;*/
     position: absolute;
@@ -184,32 +212,6 @@ section{
 /*    width: 100%;*/
 /*}*/
 
-.home-imgHover{
-    position: absolute;
-    top: 70px;
-    right: 210px;
-    width: 600px;
-    height: 100%;
-    background: transparent;
-    transition: 3s;
-
-}
-.home-imgHover:hover{
-    background: var(--deep-steel);
-    opacity: 0.8;
-}
-.home-imgHover::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--deep-steel);
-    animation: showRight 1s ease forwards;
-    animation-delay: 2s;
-    z-index: 2;
-}
 
 .stack-part{
     background-color: var(--deep-steel);
@@ -271,20 +273,34 @@ section{
 .projectImage{
     width: 650px;
 }
-.contact-part{
+.contact-Section{
     /*background-color: var(--deep-steel);*/
-    background-color: #1E1F26;
+    background-color: var(--plum);
     margin: 0 auto;
     display: flex;             /* make parent flex */
     justify-content: center;   /* center child horizontally */
     padding-top: 50px;
+    position: relative;
+    height: 60vh;
 }
-.contact-Section{
-    display: flex;
-    justify-content: space-between;
+
+.contact-Section::before {
+    content: "";
+    position: absolute;
+    bottom: 15%;
+    left: -10%;
+    width: 40%;
+    height: 100%;
+    background-image: url("/src/assets/images/pattern-rings.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain; /* or cover */
+    z-index: 0;
 }
+
 .contact-subtitle{
     max-width: 550px;
+    margin-right: 150px;
 }
 
 /*KEYFRAMES ANIMATION*/

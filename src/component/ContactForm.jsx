@@ -1,5 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './ContactForm.css'
 
 function ContactForm() {
@@ -41,15 +43,18 @@ function ContactForm() {
             })
             .then(() => {
                 setStatus("✅ Message sent! Check your email.");
+                toast.success("✅ Message sent! Check your email.")
                 setForm({ from_name: "", reply_to: "", message: "", honeypot: "" });
             })
             .catch((error) => {
                 console.error(error, import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
                 setStatus("❌ Failed to send, please try again.");
+                toast.error("❌ Something went wrong. Please try again.");
             });
     };
 
     return (
+        <>
         <form onSubmit={handleSubmit} className="contact-form">
             <div className="form__group field">
                 <input type="text" className="form__field" placeholder="Your Name" name="from_name" id='name'
@@ -86,23 +91,17 @@ function ContactForm() {
             />
 
             <button type="submit" className="button-86" role="button">Send Message</button>
-            {/*<button type="submit" className="form-button">*/}
-            {/*    Send*/}
-            {/*</button>*/}
-            {status && <div className="col-sm-12">
-                <div
-                    className="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
-                    <button type="button" className="close font__size-18" data-dismiss="alert">
-									<span aria-hidden="true"><a>
-                    <i className="fa fa-times greencross"></i>
-                    </a></span>
-                        <span className="sr-only">Close</span>
-                    </button>
-                    <i className="start-icon far fa-check-circle faa-tada animated"></i>
-                    <strong className="font__weight-semibold">Well done!</strong> You successfullyread this important.
-                </div>
-            </div>}
         </form>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="colored"
+            />
+        </>
     );
 }
 
