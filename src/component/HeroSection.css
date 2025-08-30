@@ -153,10 +153,10 @@ section{
 
 .home-imgHover{
     position: absolute;
-    top: 200px;
+    top: 0;
     right: 270px;
     width: 470px;
-    height: 70%;
+    height: 100%;
     background: transparent;
     transition: 3s;
 

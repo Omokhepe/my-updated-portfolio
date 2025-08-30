@@ -111,6 +111,7 @@
     font-weight: bold;
     animation: bounce 1.5s infinite;
     opacity: 1;
+    z-index: 2;
 }
 .hideChat{
     opacity: 0;
