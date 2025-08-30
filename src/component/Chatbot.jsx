@@ -42,6 +42,7 @@ export default function Chatbot({showChat, setShowChat}) {
 
     return (
         <div className={`container ${showChat ? 'showChat' : ''}`}>
+            <span className={`flow-text textPresetL ${showChat && 'hideChat'}`}>Get To Know Me</span>
             <button id="chatbot-toggle" onClick={() => setShowChat(prevState => !prevState)}>
                 <span className="material-symbols-outlined">mode_comment</span>
                 <span className="material-symbols-outlined">close</span>

@@ -8,10 +8,11 @@ section{
     min-height: 80vh;
 }
 .intro-part {
+    min-height: 100vh;
     background-color: var(--deep-steel);
     display: flex;
     align-items: center;
-    padding: 70px 15% 0;
+    padding: 5% 15% 0;
 }
 .intro-part::before {
     content: "";
@@ -64,6 +65,9 @@ section{
     background: var(--deep-steel);
     animation: showRight 1s ease forwards;
     animation-delay: 1.3s;
+}
+.side-text p{
+    margin: 50px 0;
 }
 .side-text p::before{
     content: "";
