@@ -4,13 +4,21 @@
     padding: 16px;
 }
 
+.job {
+    border-bottom: 1px solid var(--cream);
+    padding: 8px 0;
+}
+
 .job-header {
     display: flex;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
     padding: 8px 0;
-    border-bottom: 1px solid var(--cream);
+    background-color: transparent;
+    border: none;
+    width: 100%;
+
 }
 
 .job-header-left {
@@ -27,8 +35,9 @@
 }
 
 .job-meta {
-    font-size: 0.9rem;
+    /*font-size: 0.9rem;*/
     color: var(--darkMute);
+    text-align: left;
 }
 
 .job-highlights {
@@ -42,6 +51,7 @@
     width: 18px;
     height: 18px;
     transition: transform 0.3s ease;
+    color: var(--darkSecondary);
 }
 
 .chevron.rotate {

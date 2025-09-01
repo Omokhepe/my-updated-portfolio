@@ -4,9 +4,7 @@ import './HeroSection.css'
 import {projects, skillStack, techStack, workExperience} from "../constant/data.js";
 import {Chatbot, ImageSlider, ContactForm} from "./index.js";
 import 'boxicons'
-import ChatbotIcon from "../constant/ChatbotIcon.jsx";
 import './Chatbot.css';
-import Collapsible from "react-collapsible";
 import WorkExperience from "./WorkExperience.jsx";
 import useScrollAnimation from "../constant/useScrollAnimation.js";
 
