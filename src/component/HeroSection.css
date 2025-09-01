@@ -153,9 +153,9 @@ section{
 
 .home-imgHover{
     position: absolute;
-    top: 0;
-    right: 270px;
-    width: 470px;
+    top: 5%;
+    right: 16em;
+    width: 27%;
     height: 100%;
     background: transparent;
     transition: 3s;
@@ -168,7 +168,7 @@ section{
 .home-imgHover::after{
     content: "";
     position: absolute;
-    top: 0;
+    top: 5%;
     right: 0;
     width: 100%;
     height: 100%;
@@ -232,13 +232,78 @@ section{
     /*max-width: 1200px;*/
     /*margin: 50px auto;*/
     flex-wrap: wrap;
-    padding: 0 8%;
+    padding: 7% 0;
 }
 .stack-section h3{
     color: var(--cream);
 }
 .stackList{
     width: 400px;
+}
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    /*background: #f9f9f9; !* optional *!*/
+    padding: 20px 0;
+}
+.carousel-wrapper::before,
+.carousel-wrapper::after{
+    position: absolute;
+    top: 0;
+    /*left: 0;*/
+    width: 15.6em;
+    height: 100%;
+    background: red;
+    content: '';
+    z-index: 2;
+}
+.carousel-wrapper::before{
+    left: 0;
+    background: linear-gradient(to right, var(--deep-steel) 70%, rgba(44,62,80,0) 100%);
+}
+.carousel-wrapper::after{
+    right: 0;
+    background: linear-gradient(to left, var(--deep-steel) 70%, rgba(44,62,80,0) 100%);
+}
+
+.carousel {
+    display: flex;
+    gap: 40px;
+    animation: scroll 25s linear infinite;
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+.carousel-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+.workExperience{
+    min-height: 50vh;
+    /*width: 80%;*/
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+    /*align-items: center;*/
 }
 .project-Section{
     max-width: 1400px;
@@ -285,7 +350,7 @@ section{
     justify-content: center;   /* center child horizontally */
     padding-top: 50px;
     position: relative;
-    height: 60vh;
+    min-height: 60vh;
 }
 
 .contact-Section::before {
@@ -307,9 +372,35 @@ section{
     margin-right: 150px;
 }
 
+/*.item{*/
+/*    width: 200px;*/
+/*    height: 100px;*/
+/*    background-color: var(--cream);*/
+/*    border-radius: 15px;*/
+/*}*/
+
 /*KEYFRAMES ANIMATION*/
 @keyframes showRight {
     100%{
         width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-part {
+        flex-direction: column;
+        padding-top: 25%;
+    }
+    .heroImage{
+        margin-left: 0;
+        padding-top: 20px;
+    }
+    .contact-Section{
+        flex-direction: column;
+        /*height: 100vh;*/
+    }
+    .carousel-wrapper::before,
+    .carousel-wrapper::after{
+        width: 4em;
     }
 }

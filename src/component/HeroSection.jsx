@@ -1,24 +1,28 @@
 import React, {useState} from 'react';
 import {down_arrow, profileImg} from '../assets/images/index.js';
 import './HeroSection.css'
-import {techStack} from "../constant/data.js";
+import {projects, skillStack, techStack, workExperience} from "../constant/data.js";
 import {Chatbot, ImageSlider, ContactForm} from "./index.js";
 import 'boxicons'
 import ChatbotIcon from "../constant/ChatbotIcon.jsx";
 import './Chatbot.css';
+import Collapsible from "react-collapsible";
+import WorkExperience from "./WorkExperience.jsx";
+import useScrollAnimation from "../constant/useScrollAnimation.js";
 
 const HeroSection = () => {
+    useScrollAnimation('.section')
     const [showChat, setShowChat] = useState(false);
 
     return (
         <>
-            <section className="intro-part">
+            <section className="intro-part section">
                     <div className='side-text'>
                         <h2 className='welcome textPresetXL textMargin'>Nice to Meet You! <br/> I’m Omoh Imobu</h2>
                         <h4 className='textPresetL'>Software Developer</h4>
-                        <p className='intro-text textPreset1Med'>a developer based in the Philippines. I enjoy building modern web applications that are fast, scalable, and user-friendly. Most of my work revolves around React, Next.js, and TypeScript, but I’m always exploring new tools and ways to make the web better. When I’m not coding, I’m usually learning something new, experimenting with design ideas, or improving projects I’ve already built.</p>
+                        <p className='intro-text textPreset1Med'>A developer based in the Philippines. I enjoy building modern web applications that are fast, scalable, and user-friendly. Most of my work revolves around React, Next.js, and TypeScript, but I’m always exploring new tools and ways to make the web better. When I’m not coding, I’m usually learning something new, experimenting with design ideas, or improving projects I’ve already built.</p>
                         <div className='btn-box textPreset1Med'>
-                            <a href="#contact-me">contact me</a>
+                            <a href="#contact-me">Contact me</a>
                             <a href="#" onClick={() => setShowChat(prevState => !prevState)}>Let's Talk</a>
                         </div>
 
@@ -37,20 +41,30 @@ const HeroSection = () => {
                 <span className='home-imgHover'></span>
             </section>
 
-            <div className='stack-section'>
-                {
-                    techStack.map((item, index) => {
-                        return (
-                            <div key={index} className='stackList'>
-                                <h3 className='textPresetL'>{item.stack}</h3>
-                                <h6 className='textPreset1Med'>{item.years} Years Experience</h6>
+            <div className='stack-section section'>
+
+                <div className="carousel-wrapper">
+                    <div className="carousel">
+                        {[...skillStack, ...skillStack].map((skill, index) => (
+                            <div className="carousel-item" key={index}>
+                                <img src={skill.image} alt={skill.stack} />
+                                <p>{skill.stack}</p>
                             </div>
-                        )
-                    })
-                }
+                        ))}
+                    </div>
+                </div>
+
+                <div className="workExperience">
+                    {
+                        workExperience.map((job,i)=>(
+                            <WorkExperience job={job}/>
+                        ))
+                    }
+                </div>
+
             </div>
 
-            <section id='projects' className='project-part'>
+            <section id='projects' className='project-part section'>
                 <div className='project-Section'>
                     <div className='project-subtitle'>
                         <h2 className='textPresetL'>Project</h2>
@@ -62,8 +76,8 @@ const HeroSection = () => {
                 </div>
             </section>
 
-            {/*<section id='contact-me' className='contact-part'>*/}
-                <div id='contact-me' className='contact-Section'>
+            {/*<section  className='contact-part'>*/}
+                <div id='contact-me' className='contact-Section section'>
                     <div className='contact-subtitle'>
                         <h2 className='textPresetXL textMargin'>Contact</h2>
                         <p className='textPreset1Med'>

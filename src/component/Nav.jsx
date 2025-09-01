@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <header className="header">
             <nav className="nav">
-                <a href="/client/public" className='navTitle textPresetBold'>
+                <a href="/" className='navTitle textPresetBold'>
                     Omoh Imobu
                 </a>
                 <ul className="navLabel textPreset1Med">
@@ -16,6 +16,11 @@ const Nav = () => {
                         ))
                     }
                 </ul>
+
+                {/*<button id="mode-toggle" >*/}
+                {/*    <span className="material-symbols-outlined">light_mode</span>*/}
+                {/*    <span className="material-symbols-outlined">dark_mode</span>*/}
+                {/*</button>*/}
             </nav>
         </header>
     );

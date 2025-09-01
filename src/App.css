@@ -6,8 +6,61 @@
 /*}*/
 
 .App{
-    background-color: red;
+    background-color: var(--deep-steel);
 }
+
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*.section {*/
+/*    opacity: 0;*/
+/*    transform: translateY(40px);*/
+/*    transition: opacity 0.6s ease, transform 0.6s ease;*/
+/*}*/
+
+/*!* Scroll down effect *!*/
+/*.section.scroll-down {*/
+/*    opacity: 1;*/
+/*    transform: translateY(0);*/
+/*    animation: slideInUp 0.6s ease;*/
+/*}*/
+
+/*!* Scroll up effect *!*/
+/*.section.scroll-up {*/
+/*    opacity: 1;*/
+/*    transform: translateY(0);*/
+/*    animation: slideInDown 0.6s ease;*/
+/*}*/
+
+/*@keyframes slideInUp {*/
+/*    from {*/
+/*        opacity: 0;*/
+/*        transform: translateY(40px);*/
+/*    }*/
+/*    to {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*}*/
+
+/*@keyframes slideInDown {*/
+/*    from {*/
+/*        opacity: 0;*/
+/*        transform: translateY(-40px);*/
+/*    }*/
+/*    to {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*}*/
 
 
 /*.logo {*/

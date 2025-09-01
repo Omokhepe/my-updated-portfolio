@@ -27,60 +27,76 @@ export default function ImageSlider() {
     };
 
     return (
-        <div className="gallery">
-            {/* Row 1: Main Image with Description */}
-            <div className="main-display">
-                <div className="image-slider">
-                    <img
-                        src={projects[mainIndex].image}
-                        alt={`main-${mainIndex}`}
-                        className="main-img"
-                    />
-                    <a href={projects[mainIndex].site} target="_blank" className="overlay">
-                        <div className="overlay-content">
-                            <span className="material-symbols-outlined">link</span>
-                            <span className="text">View Project</span>
-                        </div>
-                    </a>
-                </div>
-
-                <p className="textPreset1Med desc">{projects[mainIndex].description}</p>
-            </div>
-
-            <div className="slider">
-                <div
-                    className="slides"
-                    style={{transform: `translateX(-${index * 100}%)`}}
-                >
-                {otherImages.map((src, i) => {
-                        const actualIndex = projects.findIndex((x) => x.image === src.image);
-                        // <img key={i} src={src} alt={`slide-${i}`} />
-                        return (
-                            <img
-                                key={i}
-                                src={src.image}
-                                alt={src.title}
-                                className="thumb"
-                                onClick={() => handleClick(actualIndex)}
-                            />
-                        )
-
-                    })}
-                </div>
-
-                <button className="btn-prev prev" onClick={prevSlide}>❮</button>
-                <button className="btn-prev next" onClick={nextSlide}>❯</button>
-
-                <div className="dots">
-                    {otherImages.map((_, i) => (
-                        <span
-                            key={i}
-                            className={i === index ? "dot active" : "dot"}
-                            onClick={() => setIndex(i)}
+        <>
+            <div className="gallery">
+                {/* Row 1: Main Image with Description */}
+                <div className="main-display">
+                    <div className="image-slider">
+                        <img
+                            src={projects[mainIndex].image}
+                            alt={`main-${mainIndex}`}
+                            className="main-img"
                         />
-                    ))}
+                        <a href={projects[mainIndex].site} target="_blank" className="overlay">
+                            <div className="overlay-content">
+                                <span className="material-symbols-outlined">link</span>
+                                <span className="text">View Project</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <p className="textPreset1Med desc">{projects[mainIndex].description}</p>
+                </div>
+
+                <div className="slider">
+                    <div
+                        className="slides"
+                        style={{transform: `translateX(-${index * 100}%)`}}
+                    >
+                        {otherImages.map((src, i) => {
+                            const actualIndex = projects.findIndex((x) => x.image === src.image);
+                            // <img key={i} src={src} alt={`slide-${i}`} />
+                            return (
+                                <img
+                                    key={i}
+                                    src={src.image}
+                                    alt={src.title}
+                                    className="thumb"
+                                    onClick={() => handleClick(actualIndex)}
+                                />
+                            )
+
+                        })}
+                    </div>
+
+                    <button className="btn-prev prev" onClick={prevSlide}>❮</button>
+                    <button className="btn-prev next" onClick={nextSlide}>❯</button>
+
+                    <div className="dots">
+                        {otherImages.map((_, i) => (
+                            <span
+                                key={i}
+                                className={i === index ? "dot active" : "dot"}
+                                onClick={() => setIndex(i)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+            {/*<div className="infinite-slide">*/}
+            {/*    <div className="slide-track">*/}
+            {/*        {*/}
+            {/*            projects.map((items,i)=>{*/}
+            {/*                return (*/}
+            {/*                    <div className="slide" key={i}>*/}
+            {/*                        <img src={items.image} alt={items.title} />*/}
+            {/*                    </div>*/}
+            {/*                )*/}
+            {/*            })*/}
+            {/*        }*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+        </>
+
     );
 }

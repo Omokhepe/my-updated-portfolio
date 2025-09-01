@@ -181,3 +181,68 @@
 .dot.active {
     background: white;
 }
+
+.infinite-slide{
+    /*height: 250px;*/
+    /*margin: auto;*/
+    /*position: relative;*/
+    /*width: 90%;*/
+    /*display: grid;*/
+    /*place-items: center;*/
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.slide-track{
+    display: flex;
+    width: calc(250px * 6);
+    transform-style: preserve-3d;
+    animation: scroll 40s linear infinite;
+}
+.slide-track:hover{
+    animation-play-state: paused;
+}
+
+.slide{
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+.slide img{
+    width: 100%;
+    transition: transition 1s;
+}
+.slide .img:hover{
+    transform: translateZ(20px);
+}
+
+.infinite-slide::before,
+.infinite-slide::after{
+    background: linear-gradient(to left, red 70%, rgba(44,62,80,0) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+.infinite-slide::before{
+    left: 0;
+    top: 0;
+}
+.infinite-slide::after{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
