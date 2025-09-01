@@ -368,8 +368,8 @@ section{
 }
 
 .contact-subtitle{
-    max-width: 550px;
-    margin-right: 150px;
+    max-width: 34em;
+    margin-right: 9em;
 }
 
 /*.item{*/
@@ -386,10 +386,13 @@ section{
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .intro-part {
         flex-direction: column;
         padding-top: 25%;
+    }
+    section{
+        min-height: 30vh;
     }
     .heroImage{
         margin-left: 0;
@@ -402,10 +405,117 @@ section{
     }
     .workExperience{
         width: 90%;
+        padding-top: 0;
         /*align-items: center;*/
     }
     .carousel-wrapper::before,
     .carousel-wrapper::after{
         width: 4em;
     }
+    .contact-subtitle{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 15px;
+        align-items: center;
+    }
+    .project-part{
+      padding: 0 15px;
+    }
+
+}
+@media (min-width: 576px) and (max-width: 768px){
+    .heroImage{
+        width: 15em;
+        margin-left: 40px;
+    }
+    .intro-part {
+        padding-left: 8%;
+        padding-right: 8%;
+        min-height: 60vh;
+    }
+    .side-text h2{
+        font-size: 2em;
+    }
+    .carousel-wrapper::before,
+    .carousel-wrapper::after{
+        width: 5em;
+    }
+    .workExperience{
+        width: 90%;
+        padding-top: 0;
+        /*align-items: center;*/
+    }
+    .contact-subtitle{
+        margin-right: 2em;
+        max-width: 20em;
+    }
+    .contact-subtitle h2{
+        font-size: 2.5em;
+    }.contact-subtitle p{
+        font-size: .85em;
+    }
+}
+@media (min-width: 760px) and (max-width: 1024px) {
+    section{
+        min-height: 50vh;
+    }
+    .intro-part {
+       padding-left: 8%;
+        padding-right: 8%;
+        min-height: 70vh;
+    }
+    .side-text h2{
+        font-size: 2.5em;
+    }
+    .intro-text{
+        font-size: 1em;
+    }
+    .heroImage{
+        width: 20em;
+    }
+    .carousel-wrapper::before,
+    .carousel-wrapper::after{
+        width: 6em;
+    }
+    .workExperience{
+        width: 90%;
+        padding-top: 0;
+        min-height: 40vh;
+        /*align-items: center;*/
+    }
+    .contact-subtitle{
+        margin-right: 2em;
+        max-width: 25em;
+    }
+    .contact-subtitle h2{
+        font-size: 2.5em;
+    }.contact-subtitle p{
+         font-size: 1em;
+     }
+    .home-imgHover{
+        right: 4em;
+        width: 37%;
+        /*height: 80%;*/
+        /*position: absolute;*/
+        /*top: 5%;*/
+        /*background: transparent;*/
+        /*transition: 3s;*/
+    }
+    /*.home-imgHover:hover{*/
+    /*    background: var(--deep-steel);*/
+    /*    opacity: 0.8;*/
+    /*}*/
+    /*.home-imgHover::after{*/
+    /*    content: "";*/
+    /*    position: absolute;*/
+    /*    top: 5%;*/
+    /*    right: 0;*/
+    /*    width: 100%;*/
+    /*    height: 85%;*/
+    /*    background: var(--deep-steel);*/
+    /*    animation: showRight 1s ease forwards;*/
+    /*    animation-delay: 2s;*/
+    /*    z-index: 2;*/
+    /*}*/
 }

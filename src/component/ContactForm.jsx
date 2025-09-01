@@ -12,10 +12,51 @@ function ContactForm() {
         honeypot: "", // spam trap
     });
 
-    const [status, setStatus] = useState("");
+    const [errors, setErrors] = useState({});
 
+
+    // Regex to block malicious characters like <, >, {, }, script tags
+    const safeTextRegex = /^[a-zA-Z0-9 .,!?'"\-_\n\r]+$/;
+
+    const validateField = (field, value) => {
+        let error = "";
+
+        if (field === "from_name") {
+            if (!value.trim()) {
+                error = "Name is required";
+            }
+            // else if (value.length < 3) {
+            //     error = "Name must be at least 3 characters";
+            // }
+        }
+
+        if (field === "reply_to") {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!value.trim()) {
+                error = "Email is required";
+            } else if (!emailRegex.test(value)) {
+                error = "Invalid email address";
+            }
+        }
+
+        if (field === "message") {
+            if (!value.trim()) {
+                error = "Message cannot be empty";
+            } else if (!safeTextRegex.test(value)) {
+                error = "Message contains invalid or unsafe characters";
+            }
+        }
+
+        setErrors((prev) => ({ ...prev, [field]: error }));
+    };
+
+    // const handleChange = (e) => {
+    //     setForm({ ...form, [e.target.name]: e.target.value });
+    // };
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+        validateField(name, value);
     };
 
     const handleSubmit = (e) => {
@@ -23,6 +64,12 @@ function ContactForm() {
 
         // Stop bots (honeypot)
         if (form.honeypot) return;
+
+        // Run validation before submit
+        Object.keys(form).forEach((key) => validateField(key, form[key]));
+
+        if (Object.values(errors).every((err) => err) &&
+            Object.values(form).every((val) => !val.trim())) return;
 
         // Send message to YOU
         emailjs
@@ -60,11 +107,13 @@ function ContactForm() {
                 <input type="text" className="form__field" placeholder="Your Name" name="from_name" id='name'
                        value={form.from_name} onChange={handleChange} required/>
                 <label htmlFor="from_name" className="form__label">Name</label>
+                {errors.from_name && <p className='textPreset1Med' style={{ color: "red" }}>{errors.from_name}</p>}
             </div>
             <div className="form__group field">
                 <input type="email" className="form__field" placeholder="Your Email" name="reply_to" id='email'
                        value={form.reply_to} onChange={handleChange} required/>
                 <label htmlFor="reply_to" className="form__label">Email</label>
+                {errors.reply_to && <p className='textPreset1Med' style={{ color: "red" }}>{errors.reply_to}</p>}
             </div>
             <div className="form__group field">
                 <textarea
@@ -79,6 +128,7 @@ function ContactForm() {
                     // className="border p-2 rounded"
                 />
                 <label htmlFor="message" className="form__label">Message</label>
+                {errors.message && <p className='textPreset1Med' style={{ color: "red" }}>{errors.message}</p>}
             </div>
 
             {/* Honeypot field */}

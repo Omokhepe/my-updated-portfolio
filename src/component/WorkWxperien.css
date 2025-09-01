@@ -58,3 +58,9 @@
 .chevron.rotate {
     transform: rotate(180deg);
 }
+
+@media (max-width: 768px) {
+    .job-title {
+        font-size: .85rem;
+    }
+}

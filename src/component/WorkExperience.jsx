@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import * as Collapsible from "@radix-ui/react-collapsible";
 import {ChevronDown, ChevronUp} from "lucide-react";
 import './WorkWxperien.css'
-import CollapsibleN from "react-collapsible";
+// import CollapsibleN from "react-collapsible";
 
 const WorkExperience = ({job}) => {
     const [isOpen, setIsOpen] = useState(false);
