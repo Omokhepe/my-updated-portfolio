@@ -12,7 +12,7 @@ export default function Chatbot({showChat, setShowChat}) {
     const generateBotResponse = async (history) =>{
 
         const updateHistory = (text, isError = false) => {
-            setChatHistory((prevState) => [...prevState.filter((msg)=> msg.text !== 'Thinking ...'), {role: 'model', text, isError}]);
+            setChatHistory((prevState) => [...prevState.filter((msg)=> msg.text !== 'Thinking...'), {role: 'model', text, isError}]);
         }
 
         //This cleans the question that calls the bot API

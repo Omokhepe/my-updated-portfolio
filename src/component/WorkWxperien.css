@@ -12,12 +12,13 @@
 .job-header {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     cursor: pointer;
     padding: 8px 0;
     background-color: transparent;
     border: none;
     width: 100%;
+    transition: background 160ms ease;
 
 }
 
