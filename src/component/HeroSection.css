@@ -3,9 +3,9 @@
   /*margin: 50px auto;*/
   /*background-color: var(--deep-steel);*/
 }
-section {
-  min-height: 80vh;
-}
+/*section {*/
+/*  min-height: 80vh;*/
+/*}*/
 .intro-part {
   min-height: 100vh;
   background-color: var(--primary-bg);
@@ -399,9 +399,9 @@ section {
     flex-direction: column;
     padding-top: 25%;
   }
-  section {
-    min-height: 30vh;
-  }
+  /*section {*/
+  /*  min-height: 30vh;*/
+  /*}*/
   .heroImage {
     margin-left: 0;
     padding-top: 20px;
@@ -409,7 +409,8 @@ section {
   }
   .contact-Section {
     flex-direction: column;
-    /*height: 100vh;*/
+      /*min-height: 50vh;*/
+    height: 100vh;
   }
   .workExperience {
     width: 90%;
@@ -463,6 +464,9 @@ section {
     padding-top: 0;
     /*align-items: center;*/
   }
+    .contact-Section {
+        min-height: 50vh;
+    }
   .contact-subtitle {
     margin-right: 2em;
     max-width: 20em;
@@ -484,9 +488,9 @@ section {
     }
 }
 @media (min-width: 760px) and (max-width: 1024px) {
-  section {
-    min-height: 50vh;
-  }
+  /*section {*/
+  /*  min-height: 50vh;*/
+  /*}*/
   .intro-part {
     padding-left: 8%;
     padding-right: 8%;
@@ -511,7 +515,10 @@ section {
     min-height: 40vh;
     /*align-items: center;*/
   }
-  .contact-subtitle {
+    .contact-Section {
+        min-height: 50vh;
+    }
+    .contact-subtitle {
     margin-right: 2em;
     max-width: 25em;
   }
