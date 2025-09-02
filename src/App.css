@@ -5,19 +5,21 @@
 /*  text-align: center;*/
 /*}*/
 
-.App{
-    background-color: var(--deep-steel);
+.App {
+  background-color: var(--deep-steel);
 }
 
 .section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .section.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*.section {*/
@@ -61,7 +63,6 @@
 /*        transform: translateY(0);*/
 /*    }*/
 /*}*/
-
 
 /*.logo {*/
 /*  height: 6em;*/

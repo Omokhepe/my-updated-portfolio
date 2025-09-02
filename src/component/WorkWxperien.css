@@ -1,66 +1,65 @@
 .work-container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 .job {
-    border-bottom: 1px solid var(--cream);
-    padding: 8px 0;
+  border-bottom: 1px solid var(--cream);
+  padding: 8px 0;
 }
 
 .job-header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    padding: 8px 0;
-    background-color: transparent;
-    border: none;
-    width: 100%;
-    transition: background 160ms ease;
-
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 0;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  transition: background 160ms ease;
 }
 
 .job-header-left {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .job-title {
-    /*font-size: 1.1rem;*/
-    /*font-weight: bold;*/
-    margin: 0;
+  /*font-size: 1.1rem;*/
+  /*font-weight: bold;*/
+  margin: 0;
 }
 
 .job-meta {
-    /*font-size: 0.9rem;*/
-    color: var(--darkMute);
-    text-align: left;
+  /*font-size: 0.9rem;*/
+  color: var(--darkMute);
+  text-align: left;
 }
 
 .job-highlights {
-    margin: 8px 0 16px 28px;
-    padding: 0;
-    list-style-type: disc;
-    /*color: #444;*/
+  margin: 8px 0 16px 28px;
+  padding: 0;
+  list-style-type: disc;
+  /*color: #444;*/
 }
 
 .chevron {
-    width: 18px;
-    height: 18px;
-    transition: transform 0.3s ease;
-    color: var(--darkSecondary);
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+  color: var(--darkSecondary);
 }
 
 .chevron.rotate {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {
-    .job-title {
-        font-size: .85rem;
-    }
+  .job-title {
+    font-size: 0.85rem;
+  }
 }

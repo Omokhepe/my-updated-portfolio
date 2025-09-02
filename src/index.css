@@ -4,49 +4,45 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  background-color: #C9C8BF;
+  background-color: #c9c8bf;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-    --colorBlack: #151515;
-    --colorGreen: #4EE1A0;
-    --colorAsh: #242424;
-    --colorGrey: #d9d9d9;
-    /*--colorWhite: #FFFFFF;*/
-    --primary: #11998e;
-    --secondary: #38ef7d;
-    --white: #fff;
-    --gray: #9b9b9b;
+  --colorBlack: #151515;
+  --colorGreen: #4ee1a0;
+  --colorAsh: #242424;
+  --colorGrey: #d9d9d9;
+  /*--colorWhite: #FFFFFF;*/
+  --primary: #11998e;
+  --secondary: #38ef7d;
+  --white: #fff;
+  --gray: #9b9b9b;
 
-    --deep-steel: #2C3E50;
-    --plum: #673147;
-    --dark-gray: #1E1E1E;
-    --dark-charcoal: #2A2A2A;
-    --artichoke: #8F9779;
-    --crimson: #A61C3C;
-    --off-white: #F5F5F5;
-    --cream: #FAD7A0;
+  --deep-steel: #2c3e50;
+  --plum: #673147;
+  --dark-gray: #1e1e1e;
+  --dark-charcoal: #2a2a2a;
+  --artichoke: #8f9779;
+  --crimson: #a61c3c;
+  --off-white: #f5f5f5;
+  --cream: #fad7a0;
 
-    /*Dark text color*/
-    --colorWhite: #FFFFFF;
-    --darkSecondary: #D1D5DB;
-    --darkMute: #9CA3AF;
+  /*Dark text color*/
+  --colorWhite: #ffffff;
+  --darkSecondary: #d1d5db;
+  --darkMute: #9ca3af;
 
-    --darkAccent: #A855F7;
-    --darkCallToAction: #F59E0B;
-    --darkBtnPrimary: #2563EB;
-    --darkBtnSecondary: #4B5563;
-    --darkBtnHover: #1D4ED8;
-    --softCream: #F2E9E4;
+  --darkAccent: #a855f7;
+  --darkCallToAction: #f59e0b;
+  --darkBtnPrimary: #2563eb;
+  --darkBtnSecondary: #4b5563;
+  --darkBtnHover: #1d4ed8;
+  --softCream: #f2e9e4;
 
-    color: var(--darkSecondary);
-
-
-
-
+  color: var(--darkSecondary);
 }
 
 /*a {*/
@@ -57,51 +53,57 @@
 /*a:hover {*/
 /*  color: #535bf2;*/
 /*}*/
-*{ box-sizing: border-box; }
-html,body{ height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
 body {
-    margin: 0;
-    width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  width: 100%;
 }
 
 @font-face {
-    font-family: "SpaceGroteskXL";
-    src: url('assets/fonts/static/SpaceGrotesk-Bold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    /*font-size: 88px;*/
-}@font-face {
-    font-family: "SpaceGroteskMed";
-    src: url('assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    /*font-size: 18px;*/
+  font-family: "SpaceGroteskXL";
+  src: url("assets/fonts/static/SpaceGrotesk-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  /*font-size: 88px;*/
+}
+@font-face {
+  font-family: "SpaceGroteskMed";
+  src: url("assets/fonts/static/SpaceGrotesk-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  /*font-size: 18px;*/
 }
 
-.textPresetXL{
-    font-family: "SpaceGroteskXL", sans-serif;
-    /*font-size: 5.5rem;*/
-    font-size: clamp(2rem, 5vw, 5rem);
-    /*margin: 0;*/
-}.textPresetL{
-    font-family: "SpaceGroteskXL", sans-serif;
-     font-size: clamp(1.5rem, 2vw, 3rem);
-    /*margin: 0;*/
-}.textPresetBold{
-    font-family: "SpaceGroteskXL", sans-serif;
-      font-size: clamp(1rem, 2vw, 1.5rem);
-    /*margin: 0;*/
-}.textPreset1Med{
-    font-family: "SpaceGroteskMed", sans-serif;
-       font-size: clamp(1rem, 2vw, 1.125rem);
-    /*margin: 0;*/
+.textPresetXL {
+  font-family: "SpaceGroteskXL", sans-serif;
+  /*font-size: 5.5rem;*/
+  font-size: clamp(2rem, 5vw, 5rem);
+  /*margin: 0;*/
 }
- .textMargin{
-     margin: 5px;
- }
-
-
-
+.textPresetL {
+  font-family: "SpaceGroteskXL", sans-serif;
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  /*margin: 0;*/
+}
+.textPresetBold {
+  font-family: "SpaceGroteskXL", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  /*margin: 0;*/
+}
+.textPreset1Med {
+  font-family: "SpaceGroteskMed", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  /*margin: 0;*/
+}
+.textMargin {
+  margin: 5px;
+}
 
 /*h1 {*/
 /*  font-size: 3.2em;*/

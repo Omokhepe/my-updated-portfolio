@@ -7,11 +7,11 @@ import ChatForm from "./ChatForm.jsx";
 import ChatMessage from "./ChatMessage.jsx";
 
 export {
-    Nav,
-    HeroSection,
-    Chatbot,
-    ImageSlider,
-    ContactForm,
-    ChatForm,
-    ChatMessage,
-}
+  Nav,
+  HeroSection,
+  Chatbot,
+  ImageSlider,
+  ContactForm,
+  ChatForm,
+  ChatMessage,
+};

@@ -10,12 +10,11 @@ var EmailJSResponseStatus = class {
 
 // node_modules/@emailjs/browser/es/utils/createWebStorage/createWebStorage.js
 var createWebStorage = () => {
-  if (typeof localStorage === "undefined")
-    return;
+  if (typeof localStorage === "undefined") return;
   return {
     get: (key) => Promise.resolve(localStorage.getItem(key)),
     set: (key, value) => Promise.resolve(localStorage.setItem(key, value)),
-    remove: (key) => Promise.resolve(localStorage.removeItem(key))
+    remove: (key) => Promise.resolve(localStorage.removeItem(key)),
   };
 };
 
@@ -23,16 +22,15 @@ var createWebStorage = () => {
 var store = {
   origin: "https://api.emailjs.com",
   blockHeadless: false,
-  storageProvider: createWebStorage()
+  storageProvider: createWebStorage(),
 };
 
 // node_modules/@emailjs/browser/es/utils/buildOptions/buildOptions.js
 var buildOptions = (options) => {
-  if (!options)
-    return {};
+  if (!options) return {};
   if (typeof options === "string") {
     return {
-      publicKey: options
+      publicKey: options,
     };
   }
   if (options.toString() === "[object Object]") {
@@ -43,8 +41,7 @@ var buildOptions = (options) => {
 
 // node_modules/@emailjs/browser/es/methods/init/init.js
 var init = (options, origin = "https://api.emailjs.com") => {
-  if (!options)
-    return;
+  if (!options) return;
   const opts = buildOptions(options);
   store.publicKey = opts.publicKey;
   store.blockHeadless = opts.blockHeadless;
@@ -59,7 +56,7 @@ var sendPost = async (url, data, headers = {}) => {
   const response = await fetch(store.origin + url, {
     method: "POST",
     headers,
-    body: data
+    body: data,
   });
   const message = await response.text();
   const responseStatus = new EmailJSResponseStatus(response.status, message);
@@ -91,7 +88,11 @@ var validateTemplateParams = (templateParams) => {
 
 // node_modules/@emailjs/browser/es/utils/isHeadless/isHeadless.js
 var isHeadless = (navigator2) => {
-  return navigator2.webdriver || !navigator2.languages || navigator2.languages.length === 0;
+  return (
+    navigator2.webdriver ||
+    !navigator2.languages ||
+    navigator2.languages.length === 0
+  );
 };
 
 // node_modules/@emailjs/browser/es/errors/headlessError/headlessError.js
@@ -117,12 +118,10 @@ var getValue = (data, name) => {
   return data instanceof FormData ? data.get(name) : data[name];
 };
 var isBlockedValueInParams = (options, params) => {
-  if (isBlockListDisabled(options))
-    return false;
+  if (isBlockListDisabled(options)) return false;
   validateBlockListParams(options.list, options.watchVariable);
   const value = getValue(params, options.watchVariable);
-  if (typeof value !== "string")
-    return false;
+  if (typeof value !== "string") return false;
   return options.list.includes(value);
 };
 
@@ -143,7 +142,7 @@ var validateLimitRateParams = (throttle, id) => {
 
 // node_modules/@emailjs/browser/es/utils/isLimitRateHit/isLimitRateHit.js
 var getLeftTime = async (id, throttle, storage) => {
-  const lastTime = Number(await storage.get(id) || 0);
+  const lastTime = Number((await storage.get(id)) || 0);
   return throttle - Date.now() + lastTime;
 };
 var isLimitRateHit = async (defaultID, options, storage) => {
@@ -189,10 +188,10 @@ var send = async (serviceID, templateID, templateParams, options) => {
     user_id: publicKey,
     service_id: serviceID,
     template_id: templateID,
-    template_params: templateParams
+    template_params: templateParams,
   };
   return sendPost("/api/v1.0/email/send", JSON.stringify(params), {
-    "Content-type": "application/json"
+    "Content-type": "application/json",
   });
 };
 
@@ -239,13 +238,7 @@ var es_default = {
   init,
   send,
   sendForm,
-  EmailJSResponseStatus
-};
-export {
   EmailJSResponseStatus,
-  es_default as default,
-  init,
-  send,
-  sendForm
 };
+export { EmailJSResponseStatus, es_default as default, init, send, sendForm };
 //# sourceMappingURL=@emailjs_browser.js.map

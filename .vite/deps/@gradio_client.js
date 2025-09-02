@@ -2,22 +2,44 @@ import "./chunk-BUSYA2B4.js";
 
 // node_modules/@gradio/client/dist/browser.js
 var et = Object.defineProperty;
-var tt = (e, t, s) => t in e ? et(e, t, { enumerable: true, configurable: true, writable: true, value: s }) : e[t] = s;
+var tt = (e, t, s) =>
+  t in e
+    ? et(e, t, {
+        enumerable: true,
+        configurable: true,
+        writable: true,
+        value: s,
+      })
+    : (e[t] = s);
 var u = (e, t, s) => (tt(e, typeof t != "symbol" ? t + "" : t, s), s);
 var Se = (e, t, s) => {
-  if (!t.has(e))
-    throw TypeError("Cannot " + s);
+  if (!t.has(e)) throw TypeError("Cannot " + s);
 };
-var H = (e, t, s) => (Se(e, t, "read from private field"), s ? s.call(e) : t.get(e));
+var H = (e, t, s) => (
+  Se(e, t, "read from private field"),
+  s ? s.call(e) : t.get(e)
+);
 var $e = (e, t, s) => {
   if (t.has(e))
     throw TypeError("Cannot add the same private member more than once");
   t instanceof WeakSet ? t.add(e) : t.set(e, s);
 };
-var ke = (e, t, s, n) => (Se(e, t, "write to private field"), n ? n.call(e, s) : t.set(e, s), s);
+var ke = (e, t, s, n) => (
+  Se(e, t, "write to private field"),
+  n ? n.call(e, s) : t.set(e, s),
+  s
+);
 var pe = new Intl.Collator(0, { numeric: 1 }).compare;
 function Le(e, t, s) {
-  return e = e.split("."), t = t.split("."), pe(e[0], t[0]) || pe(e[1], t[1]) || (t[2] = t.slice(2).join("."), s = /[.-]/.test(e[2] = e.slice(2).join(".")), s == /[.-]/.test(t[2]) ? pe(e[2], t[2]) : s ? -1 : 1);
+  return (
+    (e = e.split(".")),
+    (t = t.split(".")),
+    pe(e[0], t[0]) ||
+      pe(e[1], t[1]) ||
+      ((t[2] = t.slice(2).join(".")),
+      (s = /[.-]/.test((e[2] = e.slice(2).join(".")))),
+      s == /[.-]/.test(t[2]) ? pe(e[2], t[2]) : s ? -1 : 1)
+  );
 }
 var st = "host";
 var Pe = "queue/data";
@@ -48,38 +70,61 @@ var yt = "File system access is only available in Node.js environments";
 var Ie = "Root URL not found in client config";
 var bt = "Error uploading file";
 function vt(e, t, s) {
-  return t.startsWith("http://") || t.startsWith("https://") ? s ? e : t : e + t;
+  return t.startsWith("http://") || t.startsWith("https://")
+    ? s
+      ? e
+      : t
+    : e + t;
 }
 async function Ne(e, t, s) {
   try {
-    return (await (await fetch(`https://huggingface.co/api/spaces/${e}/jwt`, {
-      headers: {
-        Authorization: `Bearer ${t}`,
-        ...s ? { Cookie: s } : {}
-      }
-    })).json()).token || false;
+    return (
+      (
+        await (
+          await fetch(`https://huggingface.co/api/spaces/${e}/jwt`, {
+            headers: {
+              Authorization: `Bearer ${t}`,
+              ...(s ? { Cookie: s } : {}),
+            },
+          })
+        ).json()
+      ).token || false
+    );
   } catch {
     return false;
   }
 }
 function Et(e) {
   let t = {};
-  return e.forEach(({ api_name: s, id: n }) => {
-    s && (t[s] = n);
-  }), t;
+  return (
+    e.forEach(({ api_name: s, id: n }) => {
+      s && (t[s] = n);
+    }),
+    t
+  );
 }
 async function St(e) {
-  const t = this.options.hf_token ? { Authorization: `Bearer ${this.options.hf_token}` } : {};
-  if (t["Content-Type"] = "application/json", typeof window < "u" && window.gradio_config && location.origin !== "http://localhost:9876" && !window.gradio_config.dev_mode)
-    return window.gradio_config.current_page && (e = e.substring(0, e.lastIndexOf("/"))), window.gradio_config.root = e, { ...window.gradio_config };
-  if (e) {
-    let s = ze(
-      e,
-      this.deep_link ? Oe + "?deep_link=" + this.deep_link : Oe
+  const t = this.options.hf_token
+    ? { Authorization: `Bearer ${this.options.hf_token}` }
+    : {};
+  if (
+    ((t["Content-Type"] = "application/json"),
+    typeof window < "u" &&
+      window.gradio_config &&
+      location.origin !== "http://localhost:9876" &&
+      !window.gradio_config.dev_mode)
+  )
+    return (
+      window.gradio_config.current_page &&
+        (e = e.substring(0, e.lastIndexOf("/"))),
+      (window.gradio_config.root = e),
+      { ...window.gradio_config }
     );
+  if (e) {
+    let s = ze(e, this.deep_link ? Oe + "?deep_link=" + this.deep_link : Oe);
     const n = await this.fetch(s, {
       headers: t,
-      credentials: "include"
+      credentials: "include",
     });
     return $t(n, e, !!this.options.auth);
   }
@@ -88,23 +133,27 @@ async function St(e) {
 async function $t(e, t, s) {
   var n, i;
   if ((e == null ? void 0 : e.status) === 401 && !s) {
-    const r = await e.json(), o = (n = r == null ? void 0 : r.detail) == null ? void 0 : n.auth_message;
+    const r = await e.json(),
+      o = (n = r == null ? void 0 : r.detail) == null ? void 0 : n.auth_message;
     throw new Error(o || wt);
-  } else if ((e == null ? void 0 : e.status) === 401 && s)
-    throw new Error(xe);
+  } else if ((e == null ? void 0 : e.status) === 401 && s) throw new Error(xe);
   if ((e == null ? void 0 : e.status) === 200) {
     let r = await e.json();
-    return r.root = t, (i = r.dependencies) == null || i.forEach((o, a) => {
-      o.id === void 0 && (o.id = a);
-    }), r;
-  } else if ((e == null ? void 0 : e.status) === 401)
-    throw new Error(gt);
+    return (
+      (r.root = t),
+      (i = r.dependencies) == null ||
+        i.forEach((o, a) => {
+          o.id === void 0 && (o.id = a);
+        }),
+      r
+    );
+  } else if ((e == null ? void 0 : e.status) === 401) throw new Error(gt);
   throw new Error(z);
 }
 async function kt() {
   const { http_protocol: e, host: t } = await te(
     this.app_reference,
-    this.options.hf_token
+    this.options.hf_token,
   );
   try {
     if (this.options.auth) {
@@ -113,7 +162,7 @@ async function kt() {
         t,
         this.options.auth,
         this.fetch,
-        this.options.hf_token
+        this.options.hf_token,
       );
       s && this.set_cookies(s);
     }
@@ -123,17 +172,17 @@ async function kt() {
 }
 async function Ue(e, t, s, n, i) {
   const r = new FormData();
-  r.append("username", s == null ? void 0 : s[0]), r.append("password", s == null ? void 0 : s[1]);
+  (r.append("username", s == null ? void 0 : s[0]),
+    r.append("password", s == null ? void 0 : s[1]));
   let o = {};
   i && (o.Authorization = `Bearer ${i}`);
   const a = await n(`${e}//${t}/${it}`, {
     headers: o,
     method: "POST",
     body: r,
-    credentials: "include"
+    credentials: "include",
   });
-  if (a.status === 200)
-    return a.headers.get("set-cookie");
+  if (a.status === 200) return a.headers.get("set-cookie");
   throw a.status === 401 ? new Error(xe) : new Error(_e);
 }
 function fe(e) {
@@ -142,27 +191,30 @@ function fe(e) {
     return {
       ws_protocol: t === "https:" ? "wss" : "ws",
       http_protocol: t,
-      host: s + (n !== "/" ? n : "")
+      host: s + (n !== "/" ? n : ""),
     };
   } else if (e.startsWith("file:"))
     return {
       ws_protocol: "ws",
       http_protocol: "http:",
-      host: "lite.local"
+      host: "lite.local",
       // Special fake hostname only used for this case. This matches the hostname allowed in `is_self_host()` in `js/wasm/network/host.ts`.
     };
   return {
     ws_protocol: "wss",
     http_protocol: "https:",
-    host: new URL(e).host
+    host: new URL(e).host,
   };
 }
 var qe = (e) => {
   let t = [];
-  return e.split(/,(?=\s*[^\s=;]+=[^\s=;]+)/).forEach((n) => {
-    const [i, r] = n.split(";")[0].split("=");
-    i && r && t.push(`${i.trim()}=${r.trim()}`);
-  }), t;
+  return (
+    e.split(/,(?=\s*[^\s=;]+=[^\s=;]+)/).forEach((n) => {
+      const [i, r] = n.split(";")[0].split("=");
+      i && r && t.push(`${i.trim()}=${r.trim()}`);
+    }),
+    t
+  );
 };
 var me = /^[a-zA-Z0-9_\-\.]+\/[a-zA-Z0-9_\-\.]+$/;
 var Rt = /.*hf\.space\/{0,1}.*$/;
@@ -172,13 +224,16 @@ async function te(e, t) {
   const n = e.trim().replace(/\/$/, "");
   if (me.test(n))
     try {
-      const r = (await (await fetch(
-        `https://huggingface.co/api/spaces/${n}/${st}`,
-        { headers: s }
-      )).json()).host;
+      const r = (
+        await (
+          await fetch(`https://huggingface.co/api/spaces/${n}/${st}`, {
+            headers: s,
+          })
+        ).json()
+      ).host;
       return {
         space_id: e,
-        ...fe(r)
+        ...fe(r),
       };
     } catch {
       throw new Error(_e);
@@ -189,17 +244,23 @@ async function te(e, t) {
       space_id: o.split("/")[0].replace(".hf.space", ""),
       ws_protocol: i,
       http_protocol: r,
-      host: o
+      host: o,
     };
   }
   return {
     space_id: false,
-    ...fe(n)
+    ...fe(n),
   };
 }
 var ze = (...e) => {
   try {
-    return e.reduce((t, s) => (t = t.replace(/\/+$/, ""), s = s.replace(/^\/+/, ""), new URL(s, t + "/").toString()));
+    return e.reduce(
+      (t, s) => (
+        (t = t.replace(/\/+$/, "")),
+        (s = s.replace(/^\/+/, "")),
+        new URL(s, t + "/").toString()
+      ),
+    );
   } catch {
     throw new Error(mt);
   }
@@ -207,61 +268,94 @@ var ze = (...e) => {
 function Ot(e, t, s) {
   const n = {
     named_endpoints: {},
-    unnamed_endpoints: {}
+    unnamed_endpoints: {},
   };
-  return Object.keys(e).forEach((i) => {
-    (i === "named_endpoints" || i === "unnamed_endpoints") && (n[i] = {}, Object.entries(e[i]).forEach(
-      ([r, { parameters: o, returns: a }]) => {
-        var p, g, E, B;
-        const l = ((p = t.dependencies.find(
-          (c) => c.api_name === r || c.api_name === r.replace("/", "")
-        )) == null ? void 0 : p.id) || s[r.replace("/", "")] || -1, h = l !== -1 ? (g = t.dependencies.find((c) => c.id == l)) == null ? void 0 : g.types : { generator: false, cancel: false };
-        if (l !== -1 && ((B = (E = t.dependencies.find((c) => c.id == l)) == null ? void 0 : E.inputs) == null ? void 0 : B.length) !== o.length) {
-          const c = t.dependencies.find((d) => d.id == l).inputs.map(
-            (d) => {
-              var O;
-              return (O = t.components.find((D) => D.id === d)) == null ? void 0 : O.type;
+  return (
+    Object.keys(e).forEach((i) => {
+      (i === "named_endpoints" || i === "unnamed_endpoints") &&
+        ((n[i] = {}),
+        Object.entries(e[i]).forEach(([r, { parameters: o, returns: a }]) => {
+          var p, g, E, B;
+          const l =
+              ((p = t.dependencies.find(
+                (c) => c.api_name === r || c.api_name === r.replace("/", ""),
+              )) == null
+                ? void 0
+                : p.id) ||
+              s[r.replace("/", "")] ||
+              -1,
+            h =
+              l !== -1
+                ? (g = t.dependencies.find((c) => c.id == l)) == null
+                  ? void 0
+                  : g.types
+                : { generator: false, cancel: false };
+          if (
+            l !== -1 &&
+            ((B =
+              (E = t.dependencies.find((c) => c.id == l)) == null
+                ? void 0
+                : E.inputs) == null
+              ? void 0
+              : B.length) !== o.length
+          ) {
+            const c = t.dependencies
+              .find((d) => d.id == l)
+              .inputs.map((d) => {
+                var O;
+                return (O = t.components.find((D) => D.id === d)) == null
+                  ? void 0
+                  : O.type;
+              });
+            try {
+              c.forEach((d, O) => {
+                if (d === "state") {
+                  const D = {
+                    component: "state",
+                    example: null,
+                    parameter_default: null,
+                    parameter_has_default: true,
+                    parameter_name: null,
+                    hidden: true,
+                  };
+                  o.splice(O, 0, D);
+                }
+              });
+            } catch (d) {
+              console.error(d);
             }
-          );
-          try {
-            c.forEach((d, O) => {
-              if (d === "state") {
-                const D = {
-                  component: "state",
-                  example: null,
-                  parameter_default: null,
-                  parameter_has_default: true,
-                  parameter_name: null,
-                  hidden: true
-                };
-                o.splice(O, 0, D);
-              }
-            });
-          } catch (d) {
-            console.error(d);
           }
-        }
-        const m = (c, d, O, D) => ({
-          ...c,
-          description: Tt(c == null ? void 0 : c.type, O),
-          type: Nt(c == null ? void 0 : c.type, d, O, D) || ""
-        });
-        n[i][r] = {
-          parameters: o.map(
-            (c) => m(c, c == null ? void 0 : c.component, c == null ? void 0 : c.serializer, "parameter")
-          ),
-          returns: a.map(
-            (c) => m(c, c == null ? void 0 : c.component, c == null ? void 0 : c.serializer, "return")
-          ),
-          type: h
-        };
-      }
-    ));
-  }), n;
+          const m = (c, d, O, D) => ({
+            ...c,
+            description: Tt(c == null ? void 0 : c.type, O),
+            type: Nt(c == null ? void 0 : c.type, d, O, D) || "",
+          });
+          n[i][r] = {
+            parameters: o.map((c) =>
+              m(
+                c,
+                c == null ? void 0 : c.component,
+                c == null ? void 0 : c.serializer,
+                "parameter",
+              ),
+            ),
+            returns: a.map((c) =>
+              m(
+                c,
+                c == null ? void 0 : c.component,
+                c == null ? void 0 : c.serializer,
+                "return",
+              ),
+            ),
+            type: h,
+          };
+        }));
+    }),
+    n
+  );
 }
 function Nt(e, t, s, n) {
-  if (t === "Api")
-    return e.type;
+  if (t === "Api") return e.type;
   switch (e == null ? void 0 : e.type) {
     case "string":
       return "string";
@@ -270,19 +364,33 @@ function Nt(e, t, s, n) {
     case "number":
       return "number";
   }
-  if (s === "JSONSerializable" || s === "StringSerializable")
-    return "any";
-  if (s === "ListStringSerializable")
-    return "string[]";
+  if (s === "JSONSerializable" || s === "StringSerializable") return "any";
+  if (s === "ListStringSerializable") return "string[]";
   if (t === "Image")
     return n === "parameter" ? "Blob | File | Buffer" : "string";
   if (s === "FileSerializable")
-    return (e == null ? void 0 : e.type) === "array" ? n === "parameter" ? "(Blob | File | Buffer)[]" : "{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}[]" : n === "parameter" ? "Blob | File | Buffer" : "{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}";
+    return (e == null ? void 0 : e.type) === "array"
+      ? n === "parameter"
+        ? "(Blob | File | Buffer)[]"
+        : "{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}[]"
+      : n === "parameter"
+        ? "Blob | File | Buffer"
+        : "{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}";
   if (s === "GallerySerializable")
-    return n === "parameter" ? "[(Blob | File | Buffer), (string | null)][]" : "[{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}, (string | null))][]";
+    return n === "parameter"
+      ? "[(Blob | File | Buffer), (string | null)][]"
+      : "[{ name: string; data: string; size?: number; is_file?: boolean; orig_name?: string}, (string | null))][]";
 }
 function Tt(e, t) {
-  return t === "GallerySerializable" ? "array of [file, label] tuples" : t === "ListStringSerializable" ? "array of strings" : t === "FileSerializable" ? "array of files or single file" : e == null ? void 0 : e.description;
+  return t === "GallerySerializable"
+    ? "array of [file, label] tuples"
+    : t === "ListStringSerializable"
+      ? "array of strings"
+      : t === "FileSerializable"
+        ? "array of files or single file"
+        : e == null
+          ? void 0
+          : e.description;
 }
 function he(e, t) {
   switch (e.msg) {
@@ -298,12 +406,12 @@ function he(e, t) {
           message: je,
           stage: "error",
           code: e.code,
-          success: e.success
-        }
+          success: e.success,
+        },
       };
     case "heartbeat":
       return {
-        type: "heartbeat"
+        type: "heartbeat",
       };
     case "unexpected_error":
       return {
@@ -313,8 +421,8 @@ function he(e, t) {
           message: e.message,
           session_not_found: e.session_not_found,
           stage: "error",
-          success: false
-        }
+          success: false,
+        },
       };
     case "broken_connection":
       return {
@@ -323,8 +431,8 @@ function he(e, t) {
           queue: true,
           message: e.message,
           stage: "error",
-          success: false
-        }
+          success: false,
+        },
       };
     case "estimation":
       return {
@@ -336,8 +444,8 @@ function he(e, t) {
           size: e.queue_size,
           position: e.rank,
           eta: e.rank_eta,
-          success: e.success
-        }
+          success: e.success,
+        },
       };
     case "progress":
       return {
@@ -347,8 +455,8 @@ function he(e, t) {
           stage: "pending",
           code: e.code,
           progress_data: e.progress_data,
-          success: e.success
-        }
+          success: e.success,
+        },
       };
     case "log":
       return { type: "log", data: e };
@@ -362,9 +470,9 @@ function he(e, t) {
           code: e.code,
           progress_data: e.progress_data,
           eta: e.average_duration,
-          changed_state_ids: e.success ? e.output.changed_state_ids : void 0
+          changed_state_ids: e.success ? e.output.changed_state_ids : void 0,
         },
-        data: e.success ? e.output : null
+        data: e.success ? e.output : null,
       };
     case "process_streaming":
       return {
@@ -376,35 +484,39 @@ function he(e, t) {
           time_limit: e.time_limit,
           code: e.code,
           progress_data: e.progress_data,
-          eta: e.eta
+          eta: e.eta,
         },
-        data: e.output
+        data: e.output,
       };
     case "process_completed":
-      return "error" in e.output ? {
-        type: "update",
-        status: {
-          queue: true,
-          title: e.output.title,
-          message: e.output.error,
-          visible: e.output.visible,
-          duration: e.output.duration,
-          stage: "error",
-          code: e.code,
-          success: e.success
-        }
-      } : {
-        type: "complete",
-        status: {
-          queue: true,
-          message: e.success ? void 0 : e.output.error,
-          stage: e.success ? "complete" : "error",
-          code: e.code,
-          progress_data: e.progress_data,
-          changed_state_ids: e.success ? e.output.changed_state_ids : void 0
-        },
-        data: e.success ? e.output : null
-      };
+      return "error" in e.output
+        ? {
+            type: "update",
+            status: {
+              queue: true,
+              title: e.output.title,
+              message: e.output.error,
+              visible: e.output.visible,
+              duration: e.output.duration,
+              stage: "error",
+              code: e.code,
+              success: e.success,
+            },
+          }
+        : {
+            type: "complete",
+            status: {
+              queue: true,
+              message: e.success ? void 0 : e.output.error,
+              stage: e.success ? "complete" : "error",
+              code: e.code,
+              progress_data: e.progress_data,
+              changed_state_ids: e.success
+                ? e.output.changed_state_ids
+                : void 0,
+            },
+            data: e.success ? e.output : null,
+          };
     case "process_starts":
       return {
         type: "update",
@@ -415,9 +527,9 @@ function he(e, t) {
           size: e.rank,
           position: 0,
           success: e.success,
-          eta: e.eta
+          eta: e.eta,
         },
-        original_msg: "process_starts"
+        original_msg: "process_starts",
       };
   }
   return { type: "none", status: { stage: "error", queue: true } };
@@ -425,34 +537,45 @@ function he(e, t) {
 var Ct = (e = [], t) => {
   const s = t ? t.parameters : [];
   if (Array.isArray(e))
-    return t && s.length > 0 && e.length > s.length && console.warn("Too many arguments provided for the endpoint."), e;
-  const n = [], i = Object.keys(e);
-  return s.forEach((r, o) => {
-    if (e.hasOwnProperty(r.parameter_name))
-      n[o] = e[r.parameter_name];
-    else if (r.parameter_has_default)
-      n[o] = r.parameter_default;
-    else
-      throw new Error(
-        `No value provided for required parameter: ${r.parameter_name}`
-      );
-  }), i.forEach((r) => {
-    if (!s.some((o) => o.parameter_name === r))
-      throw new Error(
-        `Parameter \`${r}\` is not a valid keyword argument. Please refer to the API for usage.`
-      );
-  }), n.forEach((r, o) => {
-    if (r === void 0 && !s[o].parameter_has_default)
-      throw new Error(
-        `No value provided for required parameter: ${s[o].parameter_name}`
-      );
-  }), n;
+    return (
+      t &&
+        s.length > 0 &&
+        e.length > s.length &&
+        console.warn("Too many arguments provided for the endpoint."),
+      e
+    );
+  const n = [],
+    i = Object.keys(e);
+  return (
+    s.forEach((r, o) => {
+      if (e.hasOwnProperty(r.parameter_name)) n[o] = e[r.parameter_name];
+      else if (r.parameter_has_default) n[o] = r.parameter_default;
+      else
+        throw new Error(
+          `No value provided for required parameter: ${r.parameter_name}`,
+        );
+    }),
+    i.forEach((r) => {
+      if (!s.some((o) => o.parameter_name === r))
+        throw new Error(
+          `Parameter \`${r}\` is not a valid keyword argument. Please refer to the API for usage.`,
+        );
+    }),
+    n.forEach((r, o) => {
+      if (r === void 0 && !s[o].parameter_has_default)
+        throw new Error(
+          `No value provided for required parameter: ${s[o].parameter_name}`,
+        );
+    }),
+    n
+  );
 };
 async function Dt() {
-  if (this.api_info)
-    return this.api_info;
-  const { hf_token: e } = this.options, { config: t } = this, s = { "Content-Type": "application/json" };
-  if (e && (s.Authorization = `Bearer ${e}`), !!t)
+  if (this.api_info) return this.api_info;
+  const { hf_token: e } = this.options,
+    { config: t } = this,
+    s = { "Content-Type": "application/json" };
+  if ((e && (s.Authorization = `Bearer ${e}`), !!t))
     try {
       let n, i;
       if (typeof window < "u" && window.gradio_api_info)
@@ -463,23 +586,28 @@ async function Dt() {
             method: "POST",
             body: JSON.stringify({
               serialize: false,
-              config: JSON.stringify(t)
+              config: JSON.stringify(t),
             }),
             headers: s,
-            credentials: "include"
+            credentials: "include",
           });
         else {
           const r = ze(t.root, this.api_prefix, ot);
           n = await this.fetch(r, {
             headers: s,
-            credentials: "include"
+            credentials: "include",
           });
         }
-        if (!n.ok)
-          throw new Error(M);
+        if (!n.ok) throw new Error(M);
         i = await n.json();
       }
-      return "api" in i && (i = i.api), i.named_endpoints["/predict"] && !i.unnamed_endpoints[0] && (i.unnamed_endpoints[0] = i.named_endpoints["/predict"]), Ot(i, t, this.api_map);
+      return (
+        "api" in i && (i = i.api),
+        i.named_endpoints["/predict"] &&
+          !i.unnamed_endpoints[0] &&
+          (i.unnamed_endpoints[0] = i.named_endpoints["/predict"]),
+        Ot(i, t, this.api_map)
+      );
     } catch (n) {
       throw new Error("Could not get API info. " + n.message);
     }
@@ -487,21 +615,27 @@ async function Dt() {
 async function At(e, t, s) {
   var a;
   const n = {};
-  (a = this == null ? void 0 : this.options) != null && a.hf_token && (n.Authorization = `Bearer ${this.options.hf_token}`);
-  const i = 1e3, r = [];
+  (a = this == null ? void 0 : this.options) != null &&
+    a.hf_token &&
+    (n.Authorization = `Bearer ${this.options.hf_token}`);
+  const i = 1e3,
+    r = [];
   let o;
   for (let l = 0; l < t.length; l += i) {
-    const h = t.slice(l, l + i), m = new FormData();
+    const h = t.slice(l, l + i),
+      m = new FormData();
     h.forEach((g) => {
       m.append("files", g);
     });
     try {
-      const g = s ? `${e}${this.api_prefix}/${Re}?upload_id=${s}` : `${e}${this.api_prefix}/${Re}`;
+      const g = s
+        ? `${e}${this.api_prefix}/${Re}?upload_id=${s}`
+        : `${e}${this.api_prefix}/${Re}`;
       o = await this.fetch(g, {
         method: "POST",
         body: m,
         headers: n,
-        credentials: "include"
+        credentials: "include",
       });
     } catch (g) {
       throw new Error(M + g.message);
@@ -516,40 +650,39 @@ async function At(e, t, s) {
   return { files: r };
 }
 async function Lt(e, t, s, n) {
-  let i = (Array.isArray(e) ? e : [e]).map(
-    (o) => o.blob
-  );
-  const r = i.filter(
-    (o) => o.size > (n ?? 1 / 0)
-  );
+  let i = (Array.isArray(e) ? e : [e]).map((o) => o.blob);
+  const r = i.filter((o) => o.size > (n ?? 1 / 0));
   if (r.length)
     throw new Error(
-      `File size exceeds the maximum allowed size of ${n} bytes: ${r.map((o) => o.name).join(", ")}`
+      `File size exceeds the maximum allowed size of ${n} bytes: ${r.map((o) => o.name).join(", ")}`,
     );
   return await Promise.all(
-    await this.upload_files(t, i, s).then(
-      async (o) => {
-        if (o.error)
-          throw new Error(o.error);
-        return o.files ? o.files.map((a, l) => new se({
-          ...e[l],
-          path: a,
-          url: `${t}${this.api_prefix}/file=${a}`
-        })) : [];
-      }
-    )
+    await this.upload_files(t, i, s).then(async (o) => {
+      if (o.error) throw new Error(o.error);
+      return o.files
+        ? o.files.map(
+            (a, l) =>
+              new se({
+                ...e[l],
+                path: a,
+                url: `${t}${this.api_prefix}/file=${a}`,
+              }),
+          )
+        : [];
+    }),
   );
 }
 async function as(e, t) {
   return e.map(
-    (s) => new se({
-      path: s.name,
-      orig_name: s.name,
-      blob: s,
-      size: s.size,
-      mime_type: s.type,
-      is_stream: t
-    })
+    (s) =>
+      new se({
+        path: s.name,
+        orig_name: s.name,
+        blob: s,
+        size: s.size,
+        mime_type: s.type,
+        is_stream: t,
+      }),
   );
 }
 var se = class {
@@ -562,7 +695,7 @@ var se = class {
     is_stream: o,
     mime_type: a,
     alt_text: l,
-    b64: h
+    b64: h,
   }) {
     u(this, "path");
     u(this, "url");
@@ -574,7 +707,15 @@ var se = class {
     u(this, "alt_text");
     u(this, "b64");
     u(this, "meta", { _type: "gradio.FileData" });
-    this.path = t, this.url = s, this.orig_name = n, this.size = i, this.blob = s ? void 0 : r, this.is_stream = o, this.mime_type = a, this.alt_text = l, this.b64 = h;
+    ((this.path = t),
+      (this.url = s),
+      (this.orig_name = n),
+      (this.size = i),
+      (this.blob = s ? void 0 : r),
+      (this.is_stream = o),
+      (this.mime_type = a),
+      (this.alt_text = l),
+      (this.b64 = h));
   }
 };
 var Be = class {
@@ -583,64 +724,63 @@ var Be = class {
     u(this, "command");
     u(this, "meta");
     u(this, "fileData");
-    this.type = "command", this.command = t, this.meta = s;
+    ((this.type = "command"), (this.command = t), (this.meta = s));
   }
 };
 var Pt = typeof process < "u" && process.versions && process.versions.node;
 function Te(e, t, s) {
   for (; s.length > 1; ) {
     const i = s.shift();
-    if (typeof i == "string" || typeof i == "number")
-      e = e[i];
-    else
-      throw new Error("Invalid key type");
+    if (typeof i == "string" || typeof i == "number") e = e[i];
+    else throw new Error("Invalid key type");
   }
   const n = s.shift();
-  if (typeof n == "string" || typeof n == "number")
-    e[n] = t;
-  else
-    throw new Error("Invalid key type");
+  if (typeof n == "string" || typeof n == "number") e[n] = t;
+  else throw new Error("Invalid key type");
 }
 async function de(e, t = void 0, s = [], n = false, i = void 0) {
   if (Array.isArray(e)) {
     let r = [];
-    return await Promise.all(
-      e.map(async (o, a) => {
-        var m;
-        let l = s.slice();
-        l.push(String(a));
-        const h = await de(
-          e[a],
-          n ? ((m = i == null ? void 0 : i.parameters[a]) == null ? void 0 : m.component) || void 0 : t,
-          l,
-          false,
-          i
-        );
-        r = r.concat(h);
-      })
-    ), r;
+    return (
+      await Promise.all(
+        e.map(async (o, a) => {
+          var m;
+          let l = s.slice();
+          l.push(String(a));
+          const h = await de(
+            e[a],
+            n
+              ? ((m = i == null ? void 0 : i.parameters[a]) == null
+                  ? void 0
+                  : m.component) || void 0
+              : t,
+            l,
+            false,
+            i,
+          );
+          r = r.concat(h);
+        }),
+      ),
+      r
+    );
   } else {
-    if (globalThis.Buffer && e instanceof globalThis.Buffer || e instanceof Blob)
+    if (
+      (globalThis.Buffer && e instanceof globalThis.Buffer) ||
+      e instanceof Blob
+    )
       return [
         {
           path: s,
           blob: new Blob([e]),
-          type: t
-        }
+          type: t,
+        },
       ];
     if (typeof e == "object" && e !== null) {
       let r = [];
       for (const o of Object.keys(e)) {
-        const a = [...s, o], l = e[o];
-        r = r.concat(
-          await de(
-            l,
-            void 0,
-            a,
-            false,
-            i
-          )
-        );
+        const a = [...s, o],
+          l = e[o];
+        r = r.concat(await de(l, void 0, a, false, i));
       }
       return r;
     }
@@ -649,15 +789,22 @@ async function de(e, t = void 0, s = [], n = false, i = void 0) {
 }
 function jt(e, t) {
   var n, i;
-  let s = (i = (n = t == null ? void 0 : t.dependencies) == null ? void 0 : n.find((r) => r.id == e)) == null ? void 0 : i.queue;
+  let s =
+    (i =
+      (n = t == null ? void 0 : t.dependencies) == null
+        ? void 0
+        : n.find((r) => r.id == e)) == null
+      ? void 0
+      : i.queue;
   return s != null ? !s : !t.enable_queue;
 }
 function xt(e, t) {
   return new Promise((s, n) => {
     const i = new MessageChannel();
-    i.port1.onmessage = ({ data: r }) => {
-      i.port1.close(), s(r);
-    }, window.parent.postMessage(e, t, [i.port2]);
+    ((i.port1.onmessage = ({ data: r }) => {
+      (i.port1.close(), s(r));
+    }),
+      window.parent.postMessage(e, t, [i.port2]));
   });
 }
 function cs(e) {
@@ -667,42 +814,39 @@ function cs(e) {
         path: e,
         url: e,
         orig_name: e.split("/").pop() ?? "unknown",
-        meta: { _type: "gradio.FileData" }
+        meta: { _type: "gradio.FileData" },
       };
     if (Pt)
       return new Be("upload_file", {
         path: e,
         name: e,
-        orig_path: e
+        orig_path: e,
       });
   } else {
-    if (typeof File < "u" && e instanceof File)
-      return new Blob([e]);
-    if (e instanceof Buffer)
-      return new Blob([e]);
-    if (e instanceof Blob)
-      return e;
+    if (typeof File < "u" && e instanceof File) return new Blob([e]);
+    if (e instanceof Buffer) return new Blob([e]);
+    if (e instanceof Blob) return e;
   }
   throw new Error(
-    "Invalid input: must be a URL, File, Blob, or Buffer object."
+    "Invalid input: must be a URL, File, Blob, or Buffer object.",
   );
 }
 function K(e, t, s, n, i = false) {
   if (n === "input" && !i)
     throw new Error("Invalid code path. Cannot skip state inputs for input.");
-  if (n === "output" && i)
-    return e;
-  let r = [], o = 0;
+  if (n === "output" && i) return e;
+  let r = [],
+    o = 0;
   const a = n === "input" ? t.inputs : t.outputs;
   for (let l = 0; l < a.length; l++) {
-    const h = a[l], m = s.find((p) => p.id === h);
+    const h = a[l],
+      m = s.find((p) => p.id === h);
     if ((m == null ? void 0 : m.type) === "state") {
       if (i)
         if (e.length === a.length) {
           const p = e[o];
-          r.push(p), o++;
-        } else
-          r.push(null);
+          (r.push(p), o++);
+        } else r.push(null);
       else {
         o++;
         continue;
@@ -710,7 +854,7 @@ function K(e, t, s, n, i = false) {
       continue;
     } else {
       const p = e[o];
-      r.push(p), o++;
+      (r.push(p), o++);
     }
   }
   return r;
@@ -718,62 +862,79 @@ function K(e, t, s, n, i = false) {
 async function It(e, t, s) {
   const n = this;
   await Ut(n, t);
-  const i = await de(
-    t,
-    void 0,
-    [],
-    true,
-    s
+  const i = await de(t, void 0, [], true, s);
+  return (
+    (
+      await Promise.all(
+        i.map(async ({ path: o, blob: a, type: l }) => {
+          if (!a) return { path: o, type: l };
+          const h = await n.upload_files(e, [a]),
+            m = h.files && h.files[0];
+          return {
+            path: o,
+            file_url: m,
+            type: l,
+            name:
+              typeof File < "u" && a instanceof File
+                ? a == null
+                  ? void 0
+                  : a.name
+                : void 0,
+          };
+        }),
+      )
+    ).forEach(({ path: o, file_url: a, type: l, name: h }) => {
+      if (l === "Gallery") Te(t, a, o);
+      else if (a) {
+        const m = new se({ path: a, orig_name: h });
+        Te(t, m, o);
+      }
+    }),
+    t
   );
-  return (await Promise.all(
-    i.map(async ({ path: o, blob: a, type: l }) => {
-      if (!a)
-        return { path: o, type: l };
-      const h = await n.upload_files(e, [a]), m = h.files && h.files[0];
-      return {
-        path: o,
-        file_url: m,
-        type: l,
-        name: typeof File < "u" && a instanceof File ? a == null ? void 0 : a.name : void 0
-      };
-    })
-  )).forEach(({ path: o, file_url: a, type: l, name: h }) => {
-    if (l === "Gallery")
-      Te(t, a, o);
-    else if (a) {
-      const m = new se({ path: a, orig_name: h });
-      Te(t, m, o);
-    }
-  }), t;
 }
 async function Ut(e, t) {
   var n, i;
-  if (!(((n = e.config) == null ? void 0 : n.root) || ((i = e.config) == null ? void 0 : i.root_url)))
+  if (
+    !(
+      ((n = e.config) == null ? void 0 : n.root) ||
+      ((i = e.config) == null ? void 0 : i.root_url)
+    )
+  )
     throw new Error(Ie);
   await Fe(e, t);
 }
 async function Fe(e, t, s = []) {
   for (const n in t)
-    t[n] instanceof Be ? await qt(e, t, n) : typeof t[n] == "object" && t[n] !== null && await Fe(e, t[n], [...s, n]);
+    t[n] instanceof Be
+      ? await qt(e, t, n)
+      : typeof t[n] == "object" &&
+        t[n] !== null &&
+        (await Fe(e, t[n], [...s, n]));
 }
 async function qt(e, t, s) {
   var r, o;
   let n = t[s];
-  const i = ((r = e.config) == null ? void 0 : r.root) || ((o = e.config) == null ? void 0 : o.root_url);
-  if (!i)
-    throw new Error(Ie);
+  const i =
+    ((r = e.config) == null ? void 0 : r.root) ||
+    ((o = e.config) == null ? void 0 : o.root_url);
+  if (!i) throw new Error(Ie);
   try {
     let a, l;
     if (typeof process < "u" && process.versions && process.versions.node) {
       const g = await import("./__vite-browser-external-DYxpcVy9-QN3633GV.js");
-      l = (await import("./__vite-browser-external-DYxpcVy9-QN3633GV.js")).resolve(process.cwd(), n.meta.path), a = await g.readFile(l);
-    } else
-      throw new Error(yt);
-    const h = new Blob([a], { type: "application/octet-stream" }), m = await e.upload_files(i, [h]), p = m.files && m.files[0];
+      ((l = (
+        await import("./__vite-browser-external-DYxpcVy9-QN3633GV.js")
+      ).resolve(process.cwd(), n.meta.path)),
+        (a = await g.readFile(l)));
+    } else throw new Error(yt);
+    const h = new Blob([a], { type: "application/octet-stream" }),
+      m = await e.upload_files(i, [h]),
+      p = m.files && m.files[0];
     if (p) {
       const g = new se({
         path: p,
-        orig_name: n.meta.name || ""
+        orig_name: n.meta.name || "",
       });
       t[s] = g;
     }
@@ -783,84 +944,90 @@ async function qt(e, t, s) {
 }
 async function zt(e, t, s) {
   const n = { "Content-Type": "application/json" };
-  this.options.hf_token && (n.Authorization = `Bearer ${this.options.hf_token}`);
+  this.options.hf_token &&
+    (n.Authorization = `Bearer ${this.options.hf_token}`);
   try {
     var i = await this.fetch(e, {
       method: "POST",
       body: JSON.stringify(t),
       headers: { ...n, ...s },
-      credentials: "include"
+      credentials: "include",
     });
   } catch {
     return [{ error: M }, 500];
   }
   let r, o;
   try {
-    r = await i.json(), o = i.status;
+    ((r = await i.json()), (o = i.status));
   } catch (a) {
-    r = { error: `Could not parse server response: ${a}` }, o = 500;
+    ((r = { error: `Could not parse server response: ${a}` }), (o = 500));
   }
   return [r, o];
 }
 async function Bt(e, t = {}) {
-  let s = false, n = false;
-  if (!this.config)
-    throw new Error("Could not resolve app config");
-  if (typeof e == "number")
-    this.config.dependencies.find((i) => i.id == e);
+  let s = false,
+    n = false;
+  if (!this.config) throw new Error("Could not resolve app config");
+  if (typeof e == "number") this.config.dependencies.find((i) => i.id == e);
   else {
     const i = e.replace(/^\//, "");
-    this.config.dependencies.find(
-      (r) => r.id == this.api_map[i]
-    );
+    this.config.dependencies.find((r) => r.id == this.api_map[i]);
   }
   return new Promise(async (i, r) => {
     const o = this.submit(e, t, null, null, true);
     let a;
     for await (const l of o)
-      l.type === "data" && (n && i(a), s = true, a = l), l.type === "status" && (l.stage === "error" && r(l), l.stage === "complete" && (n = true, s && i(a)));
+      (l.type === "data" && (n && i(a), (s = true), (a = l)),
+        l.type === "status" &&
+          (l.stage === "error" && r(l),
+          l.stage === "complete" && ((n = true), s && i(a))));
   });
 }
 async function Q(e, t, s) {
-  let n = t === "subdomain" ? `https://huggingface.co/api/spaces/by-subdomain/${e}` : `https://huggingface.co/api/spaces/${e}`, i, r;
+  let n =
+      t === "subdomain"
+        ? `https://huggingface.co/api/spaces/by-subdomain/${e}`
+        : `https://huggingface.co/api/spaces/${e}`,
+    i,
+    r;
   try {
-    if (i = await fetch(n), r = i.status, r !== 200)
-      throw new Error();
+    if (((i = await fetch(n)), (r = i.status), r !== 200)) throw new Error();
     i = await i.json();
   } catch {
     s({
       status: "error",
       load_status: "error",
       message: dt,
-      detail: "NOT_FOUND"
+      detail: "NOT_FOUND",
     });
     return;
   }
-  if (!i || r !== 200)
-    return;
+  if (!i || r !== 200) return;
   const {
     runtime: { stage: o },
-    id: a
+    id: a,
   } = i;
   switch (o) {
     case "STOPPED":
     case "SLEEPING":
-      s({
+      (s({
         status: "sleeping",
         load_status: "pending",
         message: "Space is asleep. Waking it up...",
-        detail: o
-      }), setTimeout(() => {
-        Q(e, t, s);
-      }, 1e3);
+        detail: o,
+      }),
+        setTimeout(() => {
+          Q(e, t, s);
+        }, 1e3));
       break;
     case "PAUSED":
       s({
         status: "paused",
         load_status: "error",
-        message: "This space has been paused by the author. If you would like to try this demo, consider duplicating the space.",
+        message:
+          "This space has been paused by the author. If you would like to try this demo, consider duplicating the space.",
         detail: o,
-        discussions_enabled: await Ce(a)
+        discussions_enabled: await Ce(a),
       });
       break;
     case "RUNNING":
@@ -869,28 +1036,30 @@ async function Q(e, t, s) {
         status: "running",
         load_status: "complete",
         message: "Space is running.",
-        detail: o
+        detail: o,
       });
       break;
     case "BUILDING":
-      s({
+      (s({
         status: "building",
         load_status: "pending",
         message: "Space is building...",
-        detail: o
-      }), setTimeout(() => {
-        Q(e, t, s);
-      }, 1e3);
+        detail: o,
+      }),
+        setTimeout(() => {
+          Q(e, t, s);
+        }, 1e3));
       break;
     case "APP_STARTING":
-      s({
+      (s({
         status: "starting",
         load_status: "pending",
         message: "Space is starting...",
-        detail: o
-      }), setTimeout(() => {
-        Q(e, t, s);
-      }, 1e3);
+        detail: o,
+      }),
+        setTimeout(() => {
+          Q(e, t, s);
+        }, 1e3));
       break;
     default:
       s({
@@ -898,36 +1067,44 @@ async function Q(e, t, s) {
         load_status: "error",
         message: "This space is experiencing an issue.",
         detail: o,
-        discussions_enabled: await Ce(a)
+        discussions_enabled: await Ce(a),
       });
       break;
   }
 }
 var Ge = async (e, t) => {
   let s = 0;
-  const n = 12, i = 5e3;
+  const n = 12,
+    i = 5e3;
   return new Promise((r) => {
-    Q(
-      e,
-      me.test(e) ? "space_name" : "subdomain",
-      (o) => {
-        t(o), o.status === "running" || o.status === "error" || o.status === "paused" || o.status === "space_error" ? r() : (o.status === "sleeping" || o.status === "building") && (s < n ? (s++, setTimeout(() => {
-          Ge(e, t).then(r);
-        }, i)) : r());
-      }
-    );
+    Q(e, me.test(e) ? "space_name" : "subdomain", (o) => {
+      (t(o),
+        o.status === "running" ||
+        o.status === "error" ||
+        o.status === "paused" ||
+        o.status === "space_error"
+          ? r()
+          : (o.status === "sleeping" || o.status === "building") &&
+            (s < n
+              ? (s++,
+                setTimeout(() => {
+                  Ge(e, t).then(r);
+                }, i))
+              : r()));
+    });
   });
 };
 var Ft = /^(?=[^]*\b[dD]iscussions{0,1}\b)(?=[^]*\b[dD]isabled\b)[^]*$/;
 async function Ce(e) {
   try {
     const t = await fetch(
-      `https://huggingface.co/api/spaces/${e}/discussions`,
-      {
-        method: "HEAD"
-      }
-    ), s = t.headers.get("x-error-message");
-    return !(!t.ok || s && Ft.test(s));
+        `https://huggingface.co/api/spaces/${e}/discussions`,
+        {
+          method: "HEAD",
+        },
+      ),
+      s = t.headers.get("x-error-message");
+    return !(!t.ok || (s && Ft.test(s)));
   } catch {
     return false;
   }
@@ -936,10 +1113,9 @@ async function Gt(e, t) {
   const s = {};
   t && (s.Authorization = `Bearer ${t}`);
   try {
-    const n = await fetch(
-      `https://huggingface.co/api/spaces/${e}/${rt}`,
-      { headers: s }
-    );
+    const n = await fetch(`https://huggingface.co/api/spaces/${e}/${rt}`, {
+      headers: s,
+    });
     if (n.status !== 200)
       throw new Error("Space hardware could not be obtained.");
     const { hardware: i } = await n.json();
@@ -952,20 +1128,17 @@ async function Mt(e, t, s) {
   const n = {};
   s && (n.Authorization = `Bearer ${s}`);
   const i = {
-    seconds: t
+    seconds: t,
   };
   try {
-    const r = await fetch(
-      `https://huggingface.co/api/spaces/${e}/${at}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json", ...n },
-        body: JSON.stringify(i)
-      }
-    );
+    const r = await fetch(`https://huggingface.co/api/spaces/${e}/${at}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...n },
+      body: JSON.stringify(i),
+    });
     if (r.status !== 200)
       throw new Error(
-        "Could not set sleep timeout on duplicated Space. Please visit *ADD HF LINK TO SETTINGS* to set a timeout manually to reduce billing charges."
+        "Could not set sleep timeout on duplicated Space. Please visit *ADD HF LINK TO SETTINGS* to set a timeout manually to reduce billing charges.",
       );
     return await r.json();
   } catch (r) {
@@ -985,37 +1158,36 @@ var De = [
   "a100-large",
   "zero-a10g",
   "h100",
-  "h100x8"
+  "h100x8",
 ];
 async function Jt(e, t) {
   const { hf_token: s, private: n, hardware: i, timeout: r, auth: o } = t;
   if (i && !De.includes(i))
     throw new Error(
-      `Invalid hardware type provided. Valid types are: ${De.map((d) => `"${d}"`).join(",")}.`
+      `Invalid hardware type provided. Valid types are: ${De.map((d) => `"${d}"`).join(",")}.`,
     );
-  const { http_protocol: a, host: l } = await te(
-    e,
-    s
-  );
+  const { http_protocol: a, host: l } = await te(e, s);
   let h = null;
   if (o) {
-    const d = await Ue(
-      a,
-      l,
-      o,
-      fetch
-    );
+    const d = await Ue(a, l, o, fetch);
     d && (h = qe(d));
   }
   const m = {
-    Authorization: `Bearer ${s}`,
-    "Content-Type": "application/json",
-    ...h ? { Cookie: h.join("; ") } : {}
-  }, p = (await (await fetch("https://huggingface.co/api/whoami-v2", {
-    headers: m
-  })).json()).name, g = e.split("/")[1], E = {
-    repository: `${p}/${g}`
-  };
+      Authorization: `Bearer ${s}`,
+      "Content-Type": "application/json",
+      ...(h ? { Cookie: h.join("; ") } : {}),
+    },
+    p = (
+      await (
+        await fetch("https://huggingface.co/api/whoami-v2", {
+          headers: m,
+        })
+      ).json()
+    ).name,
+    g = e.split("/")[1],
+    E = {
+      repository: `${p}/${g}`,
+    };
   n && (E.private = true);
   let B;
   try {
@@ -1026,35 +1198,28 @@ async function Jt(e, t) {
   const c = i || B || "cpu-basic";
   E.hardware = c;
   try {
-    const d = await fetch(
-      `https://huggingface.co/api/spaces/${e}/duplicate`,
-      {
-        method: "POST",
-        headers: m,
-        body: JSON.stringify(E)
-      }
-    );
+    const d = await fetch(`https://huggingface.co/api/spaces/${e}/duplicate`, {
+      method: "POST",
+      headers: m,
+      body: JSON.stringify(E),
+    });
     if (d.status === 409)
       try {
         return await ee.connect(`${p}/${g}`, t);
       } catch (D) {
-        throw console.error("Failed to connect Client instance:", D), D;
+        throw (console.error("Failed to connect Client instance:", D), D);
       }
-    else if (d.status !== 200)
-      throw new Error(d.statusText);
+    else if (d.status !== 200) throw new Error(d.statusText);
     const O = await d.json();
-    return await Mt(`${p}/${g}`, r || 300, s), await ee.connect(
-      Wt(O.url),
-      t
-    );
+    return (await Mt(`${p}/${g}`, r || 300, s), await ee.connect(Wt(O.url), t));
   } catch (d) {
     throw new Error(d);
   }
 }
 function Wt(e) {
-  const t = /https:\/\/huggingface.co\/spaces\/([^/]+\/[^/]+)/, s = e.match(t);
-  if (s)
-    return s[1];
+  const t = /https:\/\/huggingface.co\/spaces\/([^/]+\/[^/]+)/,
+    s = e.match(t);
+  if (s) return s[1];
 }
 var I;
 var Ht = class extends TransformStream {
@@ -1064,68 +1229,80 @@ var Ht = class extends TransformStream {
       transform: (n, i) => {
         for (n = H(this, I) + n; ; ) {
           const r = n.indexOf(`
-`), o = s.allowCR ? n.indexOf("\r") : -1;
+`),
+            o = s.allowCR ? n.indexOf("\r") : -1;
           if (o !== -1 && o !== n.length - 1 && (r === -1 || r - 1 > o)) {
-            i.enqueue(n.slice(0, o)), n = n.slice(o + 1);
+            (i.enqueue(n.slice(0, o)), (n = n.slice(o + 1)));
             continue;
           }
-          if (r === -1)
-            break;
+          if (r === -1) break;
           const a = n[r - 1] === "\r" ? r - 1 : r;
-          i.enqueue(n.slice(0, a)), n = n.slice(r + 1);
+          (i.enqueue(n.slice(0, a)), (n = n.slice(r + 1)));
         }
         ke(this, I, n);
       },
       flush: (n) => {
-        if (H(this, I) === "")
-          return;
-        const i = s.allowCR && H(this, I).endsWith("\r") ? H(this, I).slice(0, -1) : H(this, I);
+        if (H(this, I) === "") return;
+        const i =
+          s.allowCR && H(this, I).endsWith("\r")
+            ? H(this, I).slice(0, -1)
+            : H(this, I);
         n.enqueue(i);
-      }
+      },
     });
     $e(this, I, "");
   }
 };
 I = /* @__PURE__ */ new WeakMap();
 function Vt(e) {
-  let t = new TextDecoderStream(), s = new Ht({ allowCR: true });
+  let t = new TextDecoderStream(),
+    s = new Ht({ allowCR: true });
   return e.pipeThrough(t).pipeThrough(s);
 }
 function Zt(e) {
-  let s = /[:]\s*/.exec(e), n = s && s.index;
-  if (n)
-    return [
-      e.substring(0, n),
-      e.substring(n + s[0].length)
-    ];
+  let s = /[:]\s*/.exec(e),
+    n = s && s.index;
+  if (n) return [e.substring(0, n), e.substring(n + s[0].length)];
 }
 function Ae(e, t, s) {
   e.get(t) || e.set(t, s);
 }
 async function* Kt(e, t) {
-  if (!e.body)
-    return;
-  let s = Vt(e.body), n, i = s.getReader(), r;
-  for (; ; ) {
-    if (t && t.aborted)
-      return i.cancel();
-    if (n = await i.read(), n.done)
-      return;
+  if (!e.body) return;
+  let s = Vt(e.body),
+    n,
+    i = s.getReader(),
+    r;
+  for (;;) {
+    if (t && t.aborted) return i.cancel();
+    if (((n = await i.read()), n.done)) return;
     if (!n.value) {
-      r && (yield r), r = void 0;
+      (r && (yield r), (r = void 0));
       continue;
     }
     let [o, a] = Zt(n.value) || [];
-    o && (o === "data" ? (r || (r = {}), r[o] = r[o] ? r[o] + `
-` + a : a) : o === "event" ? (r || (r = {}), r[o] = a) : o === "id" ? (r || (r = {}), r[o] = +a || a) : o === "retry" && (r || (r = {}), r[o] = +a || void 0));
+    o &&
+      (o === "data"
+        ? (r || (r = {}),
+          (r[o] = r[o]
+            ? r[o] +
+              `
+` +
+              a
+            : a))
+        : o === "event"
+          ? (r || (r = {}), (r[o] = a))
+          : o === "id"
+            ? (r || (r = {}), (r[o] = +a || a))
+            : o === "retry" && (r || (r = {}), (r[o] = +a || void 0)));
   }
 }
 async function Qt(e, t) {
   let s = new Request(e, t);
-  Ae(s.headers, "Accept", "text/event-stream"), Ae(s.headers, "Content-Type", "application/json");
+  (Ae(s.headers, "Accept", "text/event-stream"),
+    Ae(s.headers, "Content-Type", "application/json"));
   let n = await fetch(s);
-  if (!n.ok)
-    throw n;
+  if (!n.ok) throw n;
   return Kt(n, s.signal);
 }
 async function Xt() {
@@ -1135,78 +1312,80 @@ async function Xt() {
     pending_stream_messages: s,
     stream_status: n,
     config: i,
-    jwt: r
+    jwt: r,
   } = this;
   const o = this;
-  if (!i)
-    throw new Error("Could not resolve app config");
+  if (!i) throw new Error("Could not resolve app config");
   n.open = true;
-  let a = null, l = new URLSearchParams({
-    session_hash: this.session_hash
-  }).toString(), h = new URL(`${i.root}${this.api_prefix}/${Pe}?${l}`);
-  if (r && h.searchParams.set("__sign", r), a = this.stream(h), !a) {
+  let a = null,
+    l = new URLSearchParams({
+      session_hash: this.session_hash,
+    }).toString(),
+    h = new URL(`${i.root}${this.api_prefix}/${Pe}?${l}`);
+  if ((r && h.searchParams.set("__sign", r), (a = this.stream(h)), !a)) {
     console.warn("Cannot connect to SSE endpoint: " + h.toString());
     return;
   }
-  a.onmessage = async function(m) {
+  ((a.onmessage = async function (m) {
     let p = JSON.parse(m.data);
     if (p.msg === "close_stream") {
       ge(n, o.abort_controller);
       return;
     }
     const g = p.event_id;
-    if (!g)
-      await Promise.all(
-        Object.keys(e).map(
-          (E) => e[E](p)
-        )
-      );
+    if (!g) await Promise.all(Object.keys(e).map((E) => e[E](p)));
     else if (e[g] && i) {
-      p.msg === "process_completed" && ["sse", "sse_v1", "sse_v2", "sse_v2.1", "sse_v3"].includes(
-        i.protocol
-      ) && t.delete(g);
+      p.msg === "process_completed" &&
+        ["sse", "sse_v1", "sse_v2", "sse_v2.1", "sse_v3"].includes(
+          i.protocol,
+        ) &&
+        t.delete(g);
       let E = e[g];
       typeof window < "u" && typeof document < "u" ? setTimeout(E, 0, p) : E(p);
-    } else
-      s[g] || (s[g] = []), s[g].push(p);
-  }, a.onerror = async function(m) {
-    console.error(m), await Promise.all(
-      Object.keys(e).map(
-        (p) => e[p]({
-          msg: "broken_connection",
-          message: M
-        })
-      )
-    );
-  };
+    } else (s[g] || (s[g] = []), s[g].push(p));
+  }),
+    (a.onerror = async function (m) {
+      (console.error(m),
+        await Promise.all(
+          Object.keys(e).map((p) =>
+            e[p]({
+              msg: "broken_connection",
+              message: M,
+            }),
+          ),
+        ));
+    }));
 }
 function ge(e, t) {
-  e && (e.open = false, t == null || t.abort());
+  e && ((e.open = false), t == null || t.abort());
 }
 function Yt(e, t, s) {
-  !e[t] ? (e[t] = [], s.data.forEach((i, r) => {
-    e[t][r] = i;
-  })) : s.data.forEach((i, r) => {
-    let o = es(e[t][r], i);
-    e[t][r] = o, s.data[r] = o;
-  });
+  !e[t]
+    ? ((e[t] = []),
+      s.data.forEach((i, r) => {
+        e[t][r] = i;
+      }))
+    : s.data.forEach((i, r) => {
+        let o = es(e[t][r], i);
+        ((e[t][r] = o), (s.data[r] = o));
+      });
 }
 function es(e, t) {
-  return t.forEach(([s, n, i]) => {
-    e = ts(e, n, s, i);
-  }), e;
+  return (
+    t.forEach(([s, n, i]) => {
+      e = ts(e, n, s, i);
+    }),
+    e
+  );
 }
 function ts(e, t, s, n) {
   if (t.length === 0) {
-    if (s === "replace")
-      return n;
-    if (s === "append")
-      return e + n;
+    if (s === "replace") return n;
+    if (s === "append") return e + n;
     throw new Error(`Unsupported action: ${s}`);
   }
   let i = e;
-  for (let o = 0; o < t.length - 1; o++)
-    i = i[t[o]];
+  for (let o = 0; o < t.length - 1; o++) i = i[t[o]];
   const r = t[t.length - 1];
   switch (s) {
     case "replace":
@@ -1216,7 +1395,7 @@ function ts(e, t, s, n) {
       i[r] += n;
       break;
     case "add":
-      Array.isArray(i) ? i.splice(Number(r), 0, n) : i[r] = n;
+      Array.isArray(i) ? i.splice(Number(r), 0, n) : (i[r] = n);
       break;
     case "delete":
       Array.isArray(i) ? i.splice(Number(r), 1) : delete i[r];
@@ -1248,93 +1427,122 @@ function ss(e, t = {}) {
     },
     removeEventListener: () => {
       throw new Error("Method not implemented.");
-    }
+    },
   };
-  return Qt(e, t).then(async (n) => {
-    s.readyState = s.OPEN;
-    try {
-      for await (const i of n)
-        s.onmessage && s.onmessage(i);
-      s.readyState = s.CLOSED;
-    } catch (i) {
-      s.onerror && s.onerror(i), s.readyState = s.CLOSED;
-    }
-  }).catch((n) => {
-    console.error(n), s.onerror && s.onerror(n), s.readyState = s.CLOSED;
-  }), s;
+  return (
+    Qt(e, t)
+      .then(async (n) => {
+        s.readyState = s.OPEN;
+        try {
+          for await (const i of n) s.onmessage && s.onmessage(i);
+          s.readyState = s.CLOSED;
+        } catch (i) {
+          (s.onerror && s.onerror(i), (s.readyState = s.CLOSED));
+        }
+      })
+      .catch((n) => {
+        (console.error(n),
+          s.onerror && s.onerror(n),
+          (s.readyState = s.CLOSED));
+      }),
+    s
+  );
 }
 function ns(e, t = {}, s, n, i) {
   var r;
   try {
-    let o = function(w) {
-      (i || Ve[w.type]) && m(w);
-    }, a = function() {
-      for (Qe = true; Z.length > 0; )
-        Z.shift()({
-          value: void 0,
-          done: true
-        });
-    }, l = function(w) {
-      Z.length > 0 ? Z.shift()(w) : le.push(w);
-    }, h = function(w) {
-      l(is(w)), a();
-    }, m = function(w) {
-      l({ value: w, done: false });
-    }, p = function() {
-      return le.length > 0 ? Promise.resolve(le.shift()) : new Promise((w) => Z.push(w));
-    };
-    const { hf_token: g } = this.options, {
-      fetch: E,
-      app_reference: B,
-      config: c,
-      session_hash: d,
-      api_info: O,
-      api_map: D,
-      stream_status: ne,
-      pending_stream_messages: ie,
-      pending_diff_streams: oe,
-      event_callbacks: re,
-      unclosed_events: Me,
-      post_data: ae,
-      options: F,
-      api_prefix: J
-    } = this, Je = this;
-    if (!O)
-      throw new Error("No API found");
-    if (!c)
-      throw new Error("Could not resolve app config");
-    let { fn_index: f, endpoint_info: we, dependency: W } = os(
-      O,
-      e,
-      D,
-      c
-    ), We = Ct(t, we), R, N, j = c.protocol ?? "ws", ye = "", He = () => ye;
+    let o = function (w) {
+        (i || Ve[w.type]) && m(w);
+      },
+      a = function () {
+        for (Qe = true; Z.length > 0; )
+          Z.shift()({
+            value: void 0,
+            done: true,
+          });
+      },
+      l = function (w) {
+        Z.length > 0 ? Z.shift()(w) : le.push(w);
+      },
+      h = function (w) {
+        (l(is(w)), a());
+      },
+      m = function (w) {
+        l({ value: w, done: false });
+      },
+      p = function () {
+        return le.length > 0
+          ? Promise.resolve(le.shift())
+          : new Promise((w) => Z.push(w));
+      };
+    const { hf_token: g } = this.options,
+      {
+        fetch: E,
+        app_reference: B,
+        config: c,
+        session_hash: d,
+        api_info: O,
+        api_map: D,
+        stream_status: ne,
+        pending_stream_messages: ie,
+        pending_diff_streams: oe,
+        event_callbacks: re,
+        unclosed_events: Me,
+        post_data: ae,
+        options: F,
+        api_prefix: J,
+      } = this,
+      Je = this;
+    if (!O) throw new Error("No API found");
+    if (!c) throw new Error("Could not resolve app config");
+    let { fn_index: f, endpoint_info: we, dependency: W } = os(O, e, D, c),
+      We = Ct(t, we),
+      R,
+      N,
+      j = c.protocol ?? "ws",
+      ye = "",
+      He = () => ye;
     const _ = typeof e == "number" ? "/predict" : e;
-    let V, S = null, T = false, ce = {}, G = typeof window < "u" && typeof document < "u" ? new URLSearchParams(window.location.search).toString() : "";
-    const Ve = ((r = F == null ? void 0 : F.events) == null ? void 0 : r.reduce(
-      (w, x) => (w[x] = true, w),
-      {}
-    )) || {};
+    let V,
+      S = null,
+      T = false,
+      ce = {},
+      G =
+        typeof window < "u" && typeof document < "u"
+          ? new URLSearchParams(window.location.search).toString()
+          : "";
+    const Ve =
+      ((r = F == null ? void 0 : F.events) == null
+        ? void 0
+        : r.reduce((w, x) => ((w[x] = true), w), {})) || {};
     async function Ze() {
-      let w = {}, x = {};
-      j === "ws" ? (R && R.readyState === 0 ? R.addEventListener("open", () => {
-        R.close();
-      }) : R.close(), w = { fn_index: f, session_hash: d }) : (w = { event_id: S }, x = { event_id: S, session_hash: d, fn_index: f });
+      let w = {},
+        x = {};
+      j === "ws"
+        ? (R && R.readyState === 0
+            ? R.addEventListener("open", () => {
+                R.close();
+              })
+            : R.close(),
+          (w = { fn_index: f, session_hash: d }))
+        : ((w = { event_id: S }),
+          (x = { event_id: S, session_hash: d, fn_index: f }));
       try {
-        if (!c)
-          throw new Error("Could not resolve app config");
-        "event_id" in x && await E(`${c.root}${J}/${pt}`, {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify(x)
-        }), await E(`${c.root}${J}/${ut}`, {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify(w)
-        });
+        if (!c) throw new Error("Could not resolve app config");
+        ("event_id" in x &&
+          (await E(`${c.root}${J}/${pt}`, {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify(x),
+          })),
+          await E(`${c.root}${J}/${ut}`, {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify(w),
+          }));
       } catch {
         console.warn(
-          "The `/reset` endpoint could not be called. Subsequent endpoint results may be unreliable."
+          "The `/reset` endpoint could not be called. Subsequent endpoint results may be unreliable.",
         );
       }
     }
@@ -1342,305 +1550,334 @@ function ns(e, t = {}, s, n, i) {
       await this._resolve_heartbeat(w);
     };
     async function be(w) {
-      if (!c)
-        return;
+      if (!c) return;
       let x = w.render_id;
-      c.components = [
+      ((c.components = [
         ...c.components.filter((y) => y.props.rendered_in !== x),
-        ...w.components
-      ], c.dependencies = [
-        ...c.dependencies.filter((y) => y.rendered_in !== x),
-        ...w.dependencies
-      ];
-      const X = c.components.some((y) => y.type === "state"), Y = c.dependencies.some(
-        (y) => y.targets.some((U) => U[1] === "unload")
-      );
-      c.connect_heartbeat = X || Y, await Ke(c), o({
-        type: "render",
-        data: w,
-        endpoint: _,
-        fn_index: f
-      });
+        ...w.components,
+      ]),
+        (c.dependencies = [
+          ...c.dependencies.filter((y) => y.rendered_in !== x),
+          ...w.dependencies,
+        ]));
+      const X = c.components.some((y) => y.type === "state"),
+        Y = c.dependencies.some((y) =>
+          y.targets.some((U) => U[1] === "unload"),
+        );
+      ((c.connect_heartbeat = X || Y),
+        await Ke(c),
+        o({
+          type: "render",
+          data: w,
+          endpoint: _,
+          fn_index: f,
+        }));
     }
-    this.handle_blob(c.root, We, we).then(
-      async (w) => {
-        var Y;
-        if (V = {
-          data: K(
-            w,
-            W,
-            c.components,
-            "input",
-            true
-          ) || [],
+    this.handle_blob(c.root, We, we).then(async (w) => {
+      var Y;
+      if (
+        ((V = {
+          data: K(w, W, c.components, "input", true) || [],
           event_data: s,
           fn_index: f,
-          trigger_id: n
-        }, jt(f, c))
-          o({
-            type: "status",
-            endpoint: _,
-            stage: "pending",
-            queue: false,
-            fn_index: f,
-            time: /* @__PURE__ */ new Date()
-          }), ae(
+          trigger_id: n,
+        }),
+        jt(f, c))
+      )
+        (o({
+          type: "status",
+          endpoint: _,
+          stage: "pending",
+          queue: false,
+          fn_index: f,
+          time: /* @__PURE__ */ new Date(),
+        }),
+          ae(
             `${c.root}${J}/run${_.startsWith("/") ? _ : `/${_}`}${G ? "?" + G : ""}`,
             {
               ...V,
-              session_hash: d
-            }
-          ).then(([y, U]) => {
-            const q = y.data;
-            U == 200 ? (o({
-              type: "data",
-              endpoint: _,
-              fn_index: f,
-              data: K(
-                q,
-                W,
-                c.components,
-                "output",
-                F.with_null_state
-              ),
-              time: /* @__PURE__ */ new Date(),
-              event_data: s,
-              trigger_id: n
-            }), y.render_config && be(y.render_config), o({
-              type: "status",
-              endpoint: _,
-              fn_index: f,
-              stage: "complete",
-              eta: y.average_duration,
-              queue: false,
-              time: /* @__PURE__ */ new Date()
-            })) : o({
-              type: "status",
-              stage: "error",
-              endpoint: _,
-              fn_index: f,
-              message: y.error,
-              queue: false,
-              time: /* @__PURE__ */ new Date()
-            });
-          }).catch((y) => {
-            o({
-              type: "status",
-              stage: "error",
-              message: y.message,
-              endpoint: _,
-              fn_index: f,
-              queue: false,
-              time: /* @__PURE__ */ new Date()
-            });
-          });
-        else if (j == "ws") {
-          const { ws_protocol: y, host: U } = await te(
-            B,
-            g
-          );
-          o({
-            type: "status",
-            stage: "pending",
-            queue: true,
-            endpoint: _,
-            fn_index: f,
-            time: /* @__PURE__ */ new Date()
-          });
-          let q = new URL(
-            `${y}://${vt(
-              U,
-              c.root,
-              true
-            )}/queue/join${G ? "?" + G : ""}`
-          );
-          this.jwt && q.searchParams.set("__sign", this.jwt), R = new WebSocket(q), R.onclose = (A) => {
-            A.wasClean || o({
-              type: "status",
-              stage: "error",
-              broken: true,
-              message: M,
-              queue: true,
-              endpoint: _,
-              fn_index: f,
-              time: /* @__PURE__ */ new Date()
-            });
-          }, R.onmessage = function(A) {
-            const k = JSON.parse(A.data), { type: $, status: v, data: C } = he(
-              k,
-              ce[f]
-            );
-            if ($ === "update" && v && !T)
+              session_hash: d,
+            },
+          )
+            .then(([y, U]) => {
+              const q = y.data;
+              U == 200
+                ? (o({
+                    type: "data",
+                    endpoint: _,
+                    fn_index: f,
+                    data: K(q, W, c.components, "output", F.with_null_state),
+                    time: /* @__PURE__ */ new Date(),
+                    event_data: s,
+                    trigger_id: n,
+                  }),
+                  y.render_config && be(y.render_config),
+                  o({
+                    type: "status",
+                    endpoint: _,
+                    fn_index: f,
+                    stage: "complete",
+                    eta: y.average_duration,
+                    queue: false,
+                    time: /* @__PURE__ */ new Date(),
+                  }))
+                : o({
+                    type: "status",
+                    stage: "error",
+                    endpoint: _,
+                    fn_index: f,
+                    message: y.error,
+                    queue: false,
+                    time: /* @__PURE__ */ new Date(),
+                  });
+            })
+            .catch((y) => {
               o({
+                type: "status",
+                stage: "error",
+                message: y.message,
+                endpoint: _,
+                fn_index: f,
+                queue: false,
+                time: /* @__PURE__ */ new Date(),
+              });
+            }));
+      else if (j == "ws") {
+        const { ws_protocol: y, host: U } = await te(B, g);
+        o({
+          type: "status",
+          stage: "pending",
+          queue: true,
+          endpoint: _,
+          fn_index: f,
+          time: /* @__PURE__ */ new Date(),
+        });
+        let q = new URL(
+          `${y}://${vt(U, c.root, true)}/queue/join${G ? "?" + G : ""}`,
+        );
+        (this.jwt && q.searchParams.set("__sign", this.jwt),
+          (R = new WebSocket(q)),
+          (R.onclose = (A) => {
+            A.wasClean ||
+              o({
+                type: "status",
+                stage: "error",
+                broken: true,
+                message: M,
+                queue: true,
+                endpoint: _,
+                fn_index: f,
+                time: /* @__PURE__ */ new Date(),
+              });
+          }),
+          (R.onmessage = function (A) {
+            const k = JSON.parse(A.data),
+              { type: $, status: v, data: C } = he(k, ce[f]);
+            if ($ === "update" && v && !T)
+              (o({
                 type: "status",
                 endpoint: _,
                 fn_index: f,
                 time: /* @__PURE__ */ new Date(),
-                ...v
-              }), v.stage === "error" && R.close();
+                ...v,
+              }),
+                v.stage === "error" && R.close());
             else if ($ === "hash") {
               R.send(JSON.stringify({ fn_index: f, session_hash: d }));
               return;
             } else
-              $ === "data" ? R.send(JSON.stringify({ ...V, session_hash: d })) : $ === "complete" ? T = v : $ === "log" ? o({
-                type: "log",
-                title: C.title,
-                log: C.log,
-                level: C.level,
-                endpoint: _,
-                duration: C.duration,
-                visible: C.visible,
-                fn_index: f
-              }) : $ === "generating" && o({
-                type: "status",
+              $ === "data"
+                ? R.send(JSON.stringify({ ...V, session_hash: d }))
+                : $ === "complete"
+                  ? (T = v)
+                  : $ === "log"
+                    ? o({
+                        type: "log",
+                        title: C.title,
+                        log: C.log,
+                        level: C.level,
+                        endpoint: _,
+                        duration: C.duration,
+                        visible: C.visible,
+                        fn_index: f,
+                      })
+                    : $ === "generating" &&
+                      o({
+                        type: "status",
+                        time: /* @__PURE__ */ new Date(),
+                        ...v,
+                        stage: v == null ? void 0 : v.stage,
+                        queue: true,
+                        endpoint: _,
+                        fn_index: f,
+                      });
+            C &&
+              (o({
+                type: "data",
                 time: /* @__PURE__ */ new Date(),
-                ...v,
-                stage: v == null ? void 0 : v.stage,
-                queue: true,
-                endpoint: _,
-                fn_index: f
-              });
-            C && (o({
-              type: "data",
-              time: /* @__PURE__ */ new Date(),
-              data: K(
-                C.data,
-                W,
-                c.components,
-                "output",
-                F.with_null_state
-              ),
-              endpoint: _,
-              fn_index: f,
-              event_data: s,
-              trigger_id: n
-            }), T && (o({
-              type: "status",
-              time: /* @__PURE__ */ new Date(),
-              ...T,
-              stage: v == null ? void 0 : v.stage,
-              queue: true,
-              endpoint: _,
-              fn_index: f
-            }), R.close()));
-          }, Le(c.version || "2.0.0", "3.6") < 0 && addEventListener(
-            "open",
-            () => R.send(JSON.stringify({ hash: d }))
-          );
-        } else if (j == "sse") {
-          o({
-            type: "status",
-            stage: "pending",
-            queue: true,
-            endpoint: _,
-            fn_index: f,
-            time: /* @__PURE__ */ new Date()
-          });
-          var X = new URLSearchParams({
-            fn_index: f.toString(),
-            session_hash: d
-          }).toString();
-          let y = new URL(
-            `${c.root}${J}/${Pe}?${G ? G + "&" : ""}${X}`
-          );
-          if (this.jwt && y.searchParams.set("__sign", this.jwt), N = this.stream(y), !N)
-            return Promise.reject(
-              new Error("Cannot connect to SSE endpoint: " + y.toString())
-            );
-          N.onmessage = async function(U) {
-            const q = JSON.parse(U.data), { type: A, status: k, data: $ } = he(
-              q,
-              ce[f]
-            );
-            if (A === "update" && k && !T)
-              o({
-                type: "status",
+                data: K(C.data, W, c.components, "output", F.with_null_state),
                 endpoint: _,
                 fn_index: f,
-                time: /* @__PURE__ */ new Date(),
-                ...k
-              }), k.stage === "error" && (N == null || N.close(), a());
-            else if (A === "data") {
-              let [v, C] = await ae(
-                `${c.root}${J}/queue/data`,
-                {
-                  ...V,
-                  session_hash: d,
-                  event_id: S
-                }
-              );
-              C !== 200 && (o({
+                event_data: s,
+                trigger_id: n,
+              }),
+              T &&
+                (o({
+                  type: "status",
+                  time: /* @__PURE__ */ new Date(),
+                  ...T,
+                  stage: v == null ? void 0 : v.stage,
+                  queue: true,
+                  endpoint: _,
+                  fn_index: f,
+                }),
+                R.close()));
+          }),
+          Le(c.version || "2.0.0", "3.6") < 0 &&
+            addEventListener("open", () =>
+              R.send(JSON.stringify({ hash: d })),
+            ));
+      } else if (j == "sse") {
+        o({
+          type: "status",
+          stage: "pending",
+          queue: true,
+          endpoint: _,
+          fn_index: f,
+          time: /* @__PURE__ */ new Date(),
+        });
+        var X = new URLSearchParams({
+          fn_index: f.toString(),
+          session_hash: d,
+        }).toString();
+        let y = new URL(`${c.root}${J}/${Pe}?${G ? G + "&" : ""}${X}`);
+        if (
+          (this.jwt && y.searchParams.set("__sign", this.jwt),
+          (N = this.stream(y)),
+          !N)
+        )
+          return Promise.reject(
+            new Error("Cannot connect to SSE endpoint: " + y.toString()),
+          );
+        N.onmessage = async function (U) {
+          const q = JSON.parse(U.data),
+            { type: A, status: k, data: $ } = he(q, ce[f]);
+          if (A === "update" && k && !T)
+            (o({
+              type: "status",
+              endpoint: _,
+              fn_index: f,
+              time: /* @__PURE__ */ new Date(),
+              ...k,
+            }),
+              k.stage === "error" && (N == null || N.close(), a()));
+          else if (A === "data") {
+            let [v, C] = await ae(`${c.root}${J}/queue/data`, {
+              ...V,
+              session_hash: d,
+              event_id: S,
+            });
+            C !== 200 &&
+              (o({
                 type: "status",
                 stage: "error",
                 message: M,
                 queue: true,
                 endpoint: _,
                 fn_index: f,
-                time: /* @__PURE__ */ new Date()
-              }), N == null || N.close(), a());
-            } else
-              A === "complete" ? T = k : A === "log" ? o({
-                type: "log",
-                title: $.title,
-                log: $.log,
-                level: $.level,
-                endpoint: _,
-                duration: $.duration,
-                visible: $.visible,
-                fn_index: f
-              }) : (A === "generating" || A === "streaming") && o({
-                type: "status",
                 time: /* @__PURE__ */ new Date(),
-                ...k,
-                stage: k == null ? void 0 : k.stage,
-                queue: true,
-                endpoint: _,
-                fn_index: f
-              });
-            $ && (o({
+              }),
+              N == null || N.close(),
+              a());
+          } else
+            A === "complete"
+              ? (T = k)
+              : A === "log"
+                ? o({
+                    type: "log",
+                    title: $.title,
+                    log: $.log,
+                    level: $.level,
+                    endpoint: _,
+                    duration: $.duration,
+                    visible: $.visible,
+                    fn_index: f,
+                  })
+                : (A === "generating" || A === "streaming") &&
+                  o({
+                    type: "status",
+                    time: /* @__PURE__ */ new Date(),
+                    ...k,
+                    stage: k == null ? void 0 : k.stage,
+                    queue: true,
+                    endpoint: _,
+                    fn_index: f,
+                  });
+          $ &&
+            (o({
               type: "data",
               time: /* @__PURE__ */ new Date(),
-              data: K(
-                $.data,
-                W,
-                c.components,
-                "output",
-                F.with_null_state
-              ),
+              data: K($.data, W, c.components, "output", F.with_null_state),
               endpoint: _,
               fn_index: f,
               event_data: s,
-              trigger_id: n
-            }), T && (o({
-              type: "status",
-              time: /* @__PURE__ */ new Date(),
-              ...T,
-              stage: k == null ? void 0 : k.stage,
-              queue: true,
-              endpoint: _,
-              fn_index: f
-            }), N == null || N.close(), a()));
-          };
-        } else if (j == "sse_v1" || j == "sse_v2" || j == "sse_v2.1" || j == "sse_v3") {
-          o({
-            type: "status",
-            stage: "pending",
-            queue: true,
-            endpoint: _,
-            fn_index: f,
-            time: /* @__PURE__ */ new Date()
-          });
-          let y = "";
-          typeof window < "u" && typeof document < "u" && (y = (Y = window == null ? void 0 : window.location) == null ? void 0 : Y.hostname);
-          const q = y.includes(".dev.") ? `https://moon-${y.split(".")[1]}.dev.spaces.huggingface.tech` : "https://huggingface.co";
-          (typeof window < "u" && typeof document < "u" && window.parent != window && window.supports_zerogpu_headers ? xt("zerogpu-headers", q) : Promise.resolve(null)).then((v) => ae(
-            `${c.root}${J}/${nt}?${G}`,
-            {
-              ...V,
-              session_hash: d
-            },
-            v
-          )).then(async ([v, C]) => {
+              trigger_id: n,
+            }),
+            T &&
+              (o({
+                type: "status",
+                time: /* @__PURE__ */ new Date(),
+                ...T,
+                stage: k == null ? void 0 : k.stage,
+                queue: true,
+                endpoint: _,
+                fn_index: f,
+              }),
+              N == null || N.close(),
+              a()));
+        };
+      } else if (
+        j == "sse_v1" ||
+        j == "sse_v2" ||
+        j == "sse_v2.1" ||
+        j == "sse_v3"
+      ) {
+        o({
+          type: "status",
+          stage: "pending",
+          queue: true,
+          endpoint: _,
+          fn_index: f,
+          time: /* @__PURE__ */ new Date(),
+        });
+        let y = "";
+        typeof window < "u" &&
+          typeof document < "u" &&
+          (y =
+            (Y = window == null ? void 0 : window.location) == null
+              ? void 0
+              : Y.hostname);
+        const q = y.includes(".dev.")
+          ? `https://moon-${y.split(".")[1]}.dev.spaces.huggingface.tech`
+          : "https://huggingface.co";
+        (typeof window < "u" &&
+        typeof document < "u" &&
+        window.parent != window &&
+        window.supports_zerogpu_headers
+          ? xt("zerogpu-headers", q)
+          : Promise.resolve(null)
+        )
+          .then((v) =>
+            ae(
+              `${c.root}${J}/${nt}?${G}`,
+              {
+                ...V,
+                session_hash: d,
+              },
+              v,
+            ),
+          )
+          .then(async ([v, C]) => {
             if (C === 503)
               o({
                 type: "status",
@@ -1649,7 +1886,7 @@ function ns(e, t = {}, s, n, i) {
                 queue: true,
                 endpoint: _,
                 fn_index: f,
-                time: /* @__PURE__ */ new Date()
+                time: /* @__PURE__ */ new Date(),
               });
             else if (C !== 200)
               o({
@@ -1660,18 +1897,19 @@ function ns(e, t = {}, s, n, i) {
                 queue: true,
                 endpoint: _,
                 fn_index: f,
-                time: /* @__PURE__ */ new Date()
+                time: /* @__PURE__ */ new Date(),
               });
             else {
-              S = v.event_id, ye = S;
-              let Ee = async function(ue) {
+              ((S = v.event_id), (ye = S));
+              let Ee = async function (ue) {
                 try {
-                  const { type: L, status: b, data: P, original_msg: Xe } = he(
-                    ue,
-                    ce[f]
-                  );
-                  if (L == "heartbeat")
-                    return;
+                  const {
+                    type: L,
+                    status: b,
+                    data: P,
+                    original_msg: Xe,
+                  } = he(ue, ce[f]);
+                  if (L == "heartbeat") return;
                   if (L === "update" && b && !T)
                     o({
                       type: "status",
@@ -1679,23 +1917,31 @@ function ns(e, t = {}, s, n, i) {
                       fn_index: f,
                       time: /* @__PURE__ */ new Date(),
                       original_msg: Xe,
-                      ...b
+                      ...b,
                     });
-                  else if (L === "complete")
-                    T = b;
-                  else if (L == "unexpected_error" || L == "broken_connection") {
-                    console.error("Unexpected error", b == null ? void 0 : b.message);
+                  else if (L === "complete") T = b;
+                  else if (
+                    L == "unexpected_error" ||
+                    L == "broken_connection"
+                  ) {
+                    console.error(
+                      "Unexpected error",
+                      b == null ? void 0 : b.message,
+                    );
                     const Ye = L === "broken_connection";
                     o({
                       type: "status",
                       stage: "error",
-                      message: (b == null ? void 0 : b.message) || "An Unexpected Error Occurred!",
+                      message:
+                        (b == null ? void 0 : b.message) ||
+                        "An Unexpected Error Occurred!",
                       queue: true,
                       endpoint: _,
                       broken: Ye,
-                      session_not_found: b == null ? void 0 : b.session_not_found,
+                      session_not_found:
+                        b == null ? void 0 : b.session_not_found,
                       fn_index: f,
-                      time: /* @__PURE__ */ new Date()
+                      time: /* @__PURE__ */ new Date(),
                     });
                   } else if (L === "log") {
                     o({
@@ -1706,92 +1952,112 @@ function ns(e, t = {}, s, n, i) {
                       endpoint: _,
                       duration: P.duration,
                       visible: P.visible,
-                      fn_index: f
+                      fn_index: f,
                     });
                     return;
                   } else
-                    (L === "generating" || L === "streaming") && (o({
-                      type: "status",
+                    (L === "generating" || L === "streaming") &&
+                      (o({
+                        type: "status",
+                        time: /* @__PURE__ */ new Date(),
+                        ...b,
+                        stage: b == null ? void 0 : b.stage,
+                        queue: true,
+                        endpoint: _,
+                        fn_index: f,
+                      }),
+                      P &&
+                        W.connection !== "stream" &&
+                        ["sse_v2", "sse_v2.1", "sse_v3"].includes(j) &&
+                        Yt(oe, S, P));
+                  (P &&
+                    (o({
+                      type: "data",
                       time: /* @__PURE__ */ new Date(),
-                      ...b,
-                      stage: b == null ? void 0 : b.stage,
+                      data: K(
+                        P.data,
+                        W,
+                        c.components,
+                        "output",
+                        F.with_null_state,
+                      ),
+                      endpoint: _,
+                      fn_index: f,
+                    }),
+                    P.render_config && (await be(P.render_config)),
+                    T &&
+                      (o({
+                        type: "status",
+                        time: /* @__PURE__ */ new Date(),
+                        ...T,
+                        stage: b == null ? void 0 : b.stage,
+                        queue: true,
+                        endpoint: _,
+                        fn_index: f,
+                      }),
+                      a())),
+                    ((b == null ? void 0 : b.stage) === "complete" ||
+                      (b == null ? void 0 : b.stage) === "error") &&
+                      (re[S] && delete re[S], S in oe && delete oe[S]));
+                } catch (L) {
+                  (console.error("Unexpected client exception", L),
+                    o({
+                      type: "status",
+                      stage: "error",
+                      message: "An Unexpected Error Occurred!",
                       queue: true,
                       endpoint: _,
-                      fn_index: f
-                    }), P && W.connection !== "stream" && ["sse_v2", "sse_v2.1", "sse_v3"].includes(j) && Yt(oe, S, P));
-                  P && (o({
-                    type: "data",
-                    time: /* @__PURE__ */ new Date(),
-                    data: K(
-                      P.data,
-                      W,
-                      c.components,
-                      "output",
-                      F.with_null_state
-                    ),
-                    endpoint: _,
-                    fn_index: f
-                  }), P.render_config && await be(P.render_config), T && (o({
-                    type: "status",
-                    time: /* @__PURE__ */ new Date(),
-                    ...T,
-                    stage: b == null ? void 0 : b.stage,
-                    queue: true,
-                    endpoint: _,
-                    fn_index: f
-                  }), a())), ((b == null ? void 0 : b.stage) === "complete" || (b == null ? void 0 : b.stage) === "error") && (re[S] && delete re[S], S in oe && delete oe[S]);
-                } catch (L) {
-                  console.error("Unexpected client exception", L), o({
-                    type: "status",
-                    stage: "error",
-                    message: "An Unexpected Error Occurred!",
-                    queue: true,
-                    endpoint: _,
-                    fn_index: f,
-                    time: /* @__PURE__ */ new Date()
-                  }), ["sse_v2", "sse_v2.1", "sse_v3"].includes(j) && (ge(ne, Je.abort_controller), ne.open = false, a());
+                      fn_index: f,
+                      time: /* @__PURE__ */ new Date(),
+                    }),
+                    ["sse_v2", "sse_v2.1", "sse_v3"].includes(j) &&
+                      (ge(ne, Je.abort_controller), (ne.open = false), a()));
                 }
               };
-              S in ie && (ie[S].forEach(
-                (ue) => Ee(ue)
-              ), delete ie[S]), re[S] = Ee, Me.add(S), ne.open || await this.open_stream();
+              (S in ie && (ie[S].forEach((ue) => Ee(ue)), delete ie[S]),
+                (re[S] = Ee),
+                Me.add(S),
+                ne.open || (await this.open_stream()));
             }
           });
-        }
       }
-    );
+    });
     let Qe = false;
-    const le = [], Z = [], ve = {
-      [Symbol.asyncIterator]: () => ve,
-      next: p,
-      throw: async (w) => (h(w), p()),
-      return: async () => (a(), p()),
-      cancel: Ze,
-      event_id: He
-    };
+    const le = [],
+      Z = [],
+      ve = {
+        [Symbol.asyncIterator]: () => ve,
+        next: p,
+        throw: async (w) => (h(w), p()),
+        return: async () => (a(), p()),
+        cancel: Ze,
+        event_id: He,
+      };
     return ve;
   } catch (o) {
-    throw console.error("Submit function encountered an error:", o), o;
+    throw (console.error("Submit function encountered an error:", o), o);
   }
 }
 function is(e) {
   return {
-    then: (t, s) => s(e)
+    then: (t, s) => s(e),
   };
 }
 function os(e, t, s, n) {
   let i, r, o;
   if (typeof t == "number")
-    i = t, r = e.unnamed_endpoints[i], o = n.dependencies.find((a) => a.id == t);
+    ((i = t),
+      (r = e.unnamed_endpoints[i]),
+      (o = n.dependencies.find((a) => a.id == t)));
   else {
     const a = t.replace(/^\//, "");
-    i = s[a], r = e.named_endpoints[t.trim()], o = n.dependencies.find(
-      (l) => l.id == s[a]
-    );
+    ((i = s[a]),
+      (r = e.named_endpoints[t.trim()]),
+      (o = n.dependencies.find((l) => l.id == s[a])));
   }
   if (typeof i != "number")
     throw new Error(
-      "There is no endpoint matching that name of fn_index matching that number."
+      "There is no endpoint matching that name of fn_index matching that number.",
     );
   return { fn_index: i, endpoint_info: r, dependency: o };
 }
@@ -1830,83 +2096,143 @@ var ee = class {
     u(this, "resolve_config");
     u(this, "resolve_cookies");
     var n;
-    this.app_reference = t, this.deep_link = ((n = s.query_params) == null ? void 0 : n.deep_link) || null, s.events || (s.events = ["data"]), this.options = s, this.current_payload = {}, this.view_api = Dt.bind(this), this.upload_files = At.bind(this), this.handle_blob = It.bind(this), this.post_data = zt.bind(this), this.submit = ns.bind(this), this.predict = Bt.bind(this), this.open_stream = Xt.bind(this), this.resolve_config = St.bind(this), this.resolve_cookies = kt.bind(this), this.upload = Lt.bind(this), this.fetch = this.fetch.bind(this), this.handle_space_success = this.handle_space_success.bind(this), this.stream = this.stream.bind(this);
+    ((this.app_reference = t),
+      (this.deep_link =
+        ((n = s.query_params) == null ? void 0 : n.deep_link) || null),
+      s.events || (s.events = ["data"]),
+      (this.options = s),
+      (this.current_payload = {}),
+      (this.view_api = Dt.bind(this)),
+      (this.upload_files = At.bind(this)),
+      (this.handle_blob = It.bind(this)),
+      (this.post_data = zt.bind(this)),
+      (this.submit = ns.bind(this)),
+      (this.predict = Bt.bind(this)),
+      (this.open_stream = Xt.bind(this)),
+      (this.resolve_config = St.bind(this)),
+      (this.resolve_cookies = kt.bind(this)),
+      (this.upload = Lt.bind(this)),
+      (this.fetch = this.fetch.bind(this)),
+      (this.handle_space_success = this.handle_space_success.bind(this)),
+      (this.stream = this.stream.bind(this)));
   }
   get_url_config(t = null) {
-    if (!this.config)
-      throw new Error(z);
+    if (!this.config) throw new Error(z);
     t === null && (t = window.location.href);
     const s = (o) => o.replace(/^\/+|\/+$/g, "");
-    let n = s(new URL(this.config.root).pathname), i = s(new URL(t).pathname), r;
-    return i.startsWith(n) ? r = s(i.substring(n.length)) : r = "", this.get_page_config(r);
+    let n = s(new URL(this.config.root).pathname),
+      i = s(new URL(t).pathname),
+      r;
+    return (
+      i.startsWith(n) ? (r = s(i.substring(n.length))) : (r = ""),
+      this.get_page_config(r)
+    );
   }
   get_page_config(t) {
-    if (!this.config)
-      throw new Error(z);
+    if (!this.config) throw new Error(z);
     let s = this.config;
-    return t in s.page || (t = ""), {
-      ...s,
-      current_page: t,
-      layout: s.page[t].layout,
-      components: s.components.filter(
-        (n) => s.page[t].components.includes(n.id)
-      ),
-      dependencies: this.config.dependencies.filter(
-        (n) => s.page[t].dependencies.includes(n.id)
-      )
-    };
+    return (
+      t in s.page || (t = ""),
+      {
+        ...s,
+        current_page: t,
+        layout: s.page[t].layout,
+        components: s.components.filter((n) =>
+          s.page[t].components.includes(n.id),
+        ),
+        dependencies: this.config.dependencies.filter((n) =>
+          s.page[t].dependencies.includes(n.id),
+        ),
+      }
+    );
   }
   fetch(t, s) {
     const n = new Headers((s == null ? void 0 : s.headers) || {});
-    if (this && this.cookies && n.append("Cookie", this.cookies), this && this.options.headers)
+    if (
+      (this && this.cookies && n.append("Cookie", this.cookies),
+      this && this.options.headers)
+    )
       for (const i in this.options.headers)
         n.append(i, this.options.headers[i]);
     return fetch(t, { ...s, headers: n });
   }
   stream(t) {
     const s = new Headers();
-    if (this && this.cookies && s.append("Cookie", this.cookies), this && this.options.headers)
+    if (
+      (this && this.cookies && s.append("Cookie", this.cookies),
+      this && this.options.headers)
+    )
       for (const n in this.options.headers)
         s.append(n, this.options.headers[n]);
-    return this && this.options.hf_token && s.append("Authorization", `Bearer ${this.options.hf_token}`), this.abort_controller = new AbortController(), this.stream_instance = ss(t.toString(), {
-      credentials: "include",
-      headers: s,
-      signal: this.abort_controller.signal
-    }), this.stream_instance;
+    return (
+      this &&
+        this.options.hf_token &&
+        s.append("Authorization", `Bearer ${this.options.hf_token}`),
+      (this.abort_controller = new AbortController()),
+      (this.stream_instance = ss(t.toString(), {
+        credentials: "include",
+        headers: s,
+        signal: this.abort_controller.signal,
+      })),
+      this.stream_instance
+    );
   }
   async init() {
     var t;
-    this.options.auth && await this.resolve_cookies(), await this._resolve_config().then(
-      ({ config: s }) => this._resolve_heartbeat(s)
-    ), this.api_info = await this.view_api(), this.api_map = Et(((t = this.config) == null ? void 0 : t.dependencies) || []);
+    (this.options.auth && (await this.resolve_cookies()),
+      await this._resolve_config().then(({ config: s }) =>
+        this._resolve_heartbeat(s),
+      ),
+      (this.api_info = await this.view_api()),
+      (this.api_map = Et(
+        ((t = this.config) == null ? void 0 : t.dependencies) || [],
+      )));
   }
   async _resolve_heartbeat(t) {
-    if (t && (this.config = t, this.api_prefix = t.api_prefix || "", this.config && this.config.connect_heartbeat && this.config.space_id && this.options.hf_token && (this.jwt = await Ne(
-      this.config.space_id,
-      this.options.hf_token,
-      this.cookies
-    ))), t.space_id && this.options.hf_token && (this.jwt = await Ne(t.space_id, this.options.hf_token)), this.config && this.config.connect_heartbeat) {
+    if (
+      (t &&
+        ((this.config = t),
+        (this.api_prefix = t.api_prefix || ""),
+        this.config &&
+          this.config.connect_heartbeat &&
+          this.config.space_id &&
+          this.options.hf_token &&
+          (this.jwt = await Ne(
+            this.config.space_id,
+            this.options.hf_token,
+            this.cookies,
+          ))),
+      t.space_id &&
+        this.options.hf_token &&
+        (this.jwt = await Ne(t.space_id, this.options.hf_token)),
+      this.config && this.config.connect_heartbeat)
+    ) {
       const s = new URL(
-        `${this.config.root}${this.api_prefix}/${ct}/${this.session_hash}`
+        `${this.config.root}${this.api_prefix}/${ct}/${this.session_hash}`,
       );
-      this.jwt && s.searchParams.set("__sign", this.jwt), this.heartbeat_event || (this.heartbeat_event = this.stream(s));
+      (this.jwt && s.searchParams.set("__sign", this.jwt),
+        this.heartbeat_event || (this.heartbeat_event = this.stream(s)));
     }
   }
-  static async connect(t, s = {
-    events: ["data"]
-  }) {
+  static async connect(
+    t,
+    s = {
+      events: ["data"],
+    },
+  ) {
     const n = new this(t, s);
-    return s.session_hash && (n.session_hash = s.session_hash), await n.init(), n;
+    return (
+      s.session_hash && (n.session_hash = s.session_hash),
+      await n.init(),
+      n
+    );
   }
   async reconnect() {
-    const t = new URL(
-      `${this.config.root}${this.api_prefix}/${ft}`
-    );
+    const t = new URL(`${this.config.root}${this.api_prefix}/${ft}`);
     let s;
     try {
       const n = await this.fetch(t);
-      if (!n.ok)
-        throw new Error();
+      if (!n.ok) throw new Error();
       s = (await n.json()).app_id;
     } catch {
       return "broken";
@@ -1914,46 +2240,58 @@ var ee = class {
     return s !== this.config.app_id ? "changed" : "connected";
   }
   close() {
-    this.closed = true, ge(this.stream_status, this.abort_controller);
+    ((this.closed = true), ge(this.stream_status, this.abort_controller));
   }
   set_current_payload(t) {
     this.current_payload = t;
   }
-  static async duplicate(t, s = {
-    events: ["data"]
-  }) {
+  static async duplicate(
+    t,
+    s = {
+      events: ["data"],
+    },
+  ) {
     return Jt(t, s);
   }
   async _resolve_config() {
-    const { http_protocol: t, host: s, space_id: n } = await te(
-      this.app_reference,
-      this.options.hf_token
-    ), { status_callback: i } = this.options;
-    n && i && await Ge(n, i);
+    const {
+        http_protocol: t,
+        host: s,
+        space_id: n,
+      } = await te(this.app_reference, this.options.hf_token),
+      { status_callback: i } = this.options;
+    n && i && (await Ge(n, i));
     let r;
     try {
       let o = `${t}//${s}`;
-      if (r = await this.resolve_config(o), !r)
-        throw new Error(z);
+      if (((r = await this.resolve_config(o)), !r)) throw new Error(z);
       return this.config_success(r);
     } catch (o) {
       if (n && i)
         Q(
           n,
           me.test(n) ? "space_name" : "subdomain",
-          this.handle_space_success
+          this.handle_space_success,
         );
       else
-        throw i && i({
-          status: "error",
-          message: "Could not load this space.",
-          load_status: "error",
-          detail: "NOT_FOUND"
-        }), Error(o);
+        throw (
+          i &&
+            i({
+              status: "error",
+              message: "Could not load this space.",
+              load_status: "error",
+              detail: "NOT_FOUND",
+            }),
+          Error(o)
+        );
     }
   }
   async config_success(t) {
-    if (this.config = t, this.api_prefix = t.api_prefix || "", this.config.auth_required)
+    if (
+      ((this.config = t),
+      (this.api_prefix = t.api_prefix || ""),
+      this.config.auth_required)
+    )
       return this.prepare_return_obj();
     try {
       this.api_info = await this.view_api();
@@ -1964,60 +2302,71 @@ var ee = class {
   }
   async handle_space_success(t) {
     var n;
-    if (!this)
-      throw new Error(z);
+    if (!this) throw new Error(z);
     const { status_callback: s } = this.options;
-    if (s && s(t), t.status === "running")
+    if ((s && s(t), t.status === "running"))
       try {
-        if (this.config = await this._resolve_config(), this.api_prefix = ((n = this == null ? void 0 : this.config) == null ? void 0 : n.api_prefix) || "", !this.config)
+        if (
+          ((this.config = await this._resolve_config()),
+          (this.api_prefix =
+            ((n = this == null ? void 0 : this.config) == null
+              ? void 0
+              : n.api_prefix) || ""),
+          !this.config)
+        )
           throw new Error(z);
         return await this.config_success(this.config);
       } catch (i) {
-        throw s && s({
-          status: "error",
-          message: "Could not load this space.",
-          load_status: "error",
-          detail: "NOT_FOUND"
-        }), i;
+        throw (
+          s &&
+            s({
+              status: "error",
+              message: "Could not load this space.",
+              load_status: "error",
+              detail: "NOT_FOUND",
+            }),
+          i
+        );
       }
   }
   async component_server(t, s, n) {
     var m;
-    if (!this.config)
-      throw new Error(z);
-    const i = {}, { hf_token: r } = this.options, { session_hash: o } = this;
+    if (!this.config) throw new Error(z);
+    const i = {},
+      { hf_token: r } = this.options,
+      { session_hash: o } = this;
     r && (i.Authorization = `Bearer ${this.options.hf_token}`);
-    let a, l = this.config.components.find(
-      (p) => p.id === t
-    );
-    (m = l == null ? void 0 : l.props) != null && m.root_url ? a = l.props.root_url : a = this.config.root;
+    let a,
+      l = this.config.components.find((p) => p.id === t);
+    (m = l == null ? void 0 : l.props) != null && m.root_url
+      ? (a = l.props.root_url)
+      : (a = this.config.root);
     let h;
     if ("binary" in n) {
       h = new FormData();
-      for (const p in n.data)
-        p !== "binary" && h.append(p, n.data[p]);
-      h.set("component_id", t.toString()), h.set("fn_name", s), h.set("session_hash", o);
+      for (const p in n.data) p !== "binary" && h.append(p, n.data[p]);
+      (h.set("component_id", t.toString()),
+        h.set("fn_name", s),
+        h.set("session_hash", o));
     } else
-      h = JSON.stringify({
+      ((h = JSON.stringify({
         data: n,
         component_id: t,
         fn_name: s,
-        session_hash: o
-      }), i["Content-Type"] = "application/json";
+        session_hash: o,
+      })),
+        (i["Content-Type"] = "application/json"));
     r && (i.Authorization = `Bearer ${r}`);
     try {
-      const p = await this.fetch(
-        `${a}${this.api_prefix}/${lt}/`,
-        {
-          method: "POST",
-          body: h,
-          headers: i,
-          credentials: "include"
-        }
-      );
+      const p = await this.fetch(`${a}${this.api_prefix}/${lt}/`, {
+        method: "POST",
+        body: h,
+        headers: i,
+        credentials: "include",
+      });
       if (!p.ok)
         throw new Error(
-          "Could not connect to component server: " + p.statusText
+          "Could not connect to component server: " + p.statusText,
         );
       return await p.json();
     } catch (p) {
@@ -2033,7 +2382,7 @@ var ee = class {
       predict: this.predict,
       submit: this.submit,
       view_api: this.view_api,
-      component_server: this.component_server
+      component_server: this.component_server,
     };
   }
   async connect_ws(t) {
@@ -2045,20 +2394,29 @@ var ee = class {
         this.ws_map[t] = "failed";
         return;
       }
-      this.ws_map[t] = "pending", i.onopen = () => {
-        this.ws_map[t] = i, s();
-      }, i.onerror = (r) => {
-        console.error("WebSocket error:", r), this.close_ws(t), this.ws_map[t] = "failed", s();
-      }, i.onclose = () => {
-        this.ws_map[t] = "closed";
-      }, i.onmessage = (r) => {
-      };
+      ((this.ws_map[t] = "pending"),
+        (i.onopen = () => {
+          ((this.ws_map[t] = i), s());
+        }),
+        (i.onerror = (r) => {
+          (console.error("WebSocket error:", r),
+            this.close_ws(t),
+            (this.ws_map[t] = "failed"),
+            s());
+        }),
+        (i.onclose = () => {
+          this.ws_map[t] = "closed";
+        }),
+        (i.onmessage = (r) => {}));
     });
   }
   async send_ws_message(t, s) {
-    if (!(t in this.ws_map))
-      await this.connect_ws(t);
-    else if (this.ws_map[t] === "pending" || this.ws_map[t] === "closed" || this.ws_map[t] === "failed")
+    if (!(t in this.ws_map)) await this.connect_ws(t);
+    else if (
+      this.ws_map[t] === "pending" ||
+      this.ws_map[t] === "closed" ||
+      this.ws_map[t] === "failed"
+    )
       return;
     const n = this.ws_map[t];
     n instanceof WebSocket ? n.send(JSON.stringify(s)) : this.post_data(t, s);
@@ -2070,9 +2428,12 @@ var ee = class {
     }
   }
 };
-async function ls(e, t = {
-  events: ["data"]
-}) {
+async function ls(
+  e,
+  t = {
+    events: ["data"],
+  },
+) {
   return await ee.connect(e, t);
 }
 async function us(e, t) {
@@ -2089,6 +2450,6 @@ export {
   as as prepare_files,
   ns as submit,
   Lt as upload,
-  At as upload_files
+  At as upload_files,
 };
 //# sourceMappingURL=@gradio_client.js.map

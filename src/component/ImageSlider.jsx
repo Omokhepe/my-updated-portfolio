@@ -288,91 +288,84 @@
 //     );
 // }
 
-
 import { useState, useEffect, useRef } from "react";
-import {projects} from "../constant/data.js";
-import './ImageSlider.css'
+import { projects } from "../constant/data.js";
+import "./ImageSlider.css";
 
 export default function ImageSlider() {
-    // const images = ["/images/slide1.jpg", "/images/slide2.jpg", "/images/slide3.jpg"];
-    const [index, setIndex] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
-    const intervalRef = useRef(null);
+  // const images = ["/images/slide1.jpg", "/images/slide2.jpg", "/images/slide3.jpg"];
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef(null);
 
-    // Auto play logic
-    useEffect(() => {
-        if (!isPaused) {
-            intervalRef.current = setInterval(() => {
-                setIndex((prev) => (prev + 1) % projects.length);
-            }, 3000);
-        }
-        return () => clearInterval(intervalRef.current);
-    }, [isPaused]);
+  // Auto play logic
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setIndex((prev) => (prev + 1) % projects.length);
+      }, 3000);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [isPaused]);
 
-    const nextSlide = () => setIndex((prev) => (prev + 1) % projects.length);
-    const prevSlide = () => setIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const nextSlide = () => setIndex((prev) => (prev + 1) % projects.length);
+  const prevSlide = () =>
+    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
-    return (
-        <div
-            className='slider-carousel'
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-        >
-            {/* Image */}
-            <img
-                src={projects[index].image}
-                alt="carousel"
-                className='slider-carousel-img'
-            />
+  return (
+    <div
+      className="slider-carousel"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Image */}
+      <img
+        src={projects[index].image}
+        alt="carousel"
+        className="slider-carousel-img"
+      />
 
-            {/* Controls */}
-            <button
-                onClick={prevSlide}
-                className='img-carousel-prev'
-            >
-                ◀
-            </button>
-            <button
-                onClick={nextSlide}
-                className='img-carousel-next'
-            >
-                ▶
-            </button>
+      {/* Controls */}
+      <button onClick={prevSlide} className="img-carousel-prev">
+        ◀
+      </button>
+      <button onClick={nextSlide} className="img-carousel-next">
+        ▶
+      </button>
 
-            {/* Indicator Dots */}
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: "15px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    display: "flex",
-                    gap: "10px",
-                }}
-            >
-                {projects.map((_, i) => (
-                    <span
-                        key={i}
-                        onClick={() => setIndex(i)}
-                        style={{
-                            width: i === index ? "14px" : "10px",
-                            height: i === index ? "14px" : "10px",
-                            borderRadius: "50%",
-                            cursor: "pointer",
-                            background: i === index ? "#ff6347" : "rgba(255,255,255,0.5)",
-                            border: "2px solid #fff",
-                            transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "scale(1.3)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "scale(1)";
-                        }}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+      {/* Indicator Dots */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "15px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          gap: "10px",
+        }}
+      >
+        {projects.map((_, i) => (
+          <span
+            key={i}
+            onClick={() => setIndex(i)}
+            style={{
+              width: i === index ? "14px" : "10px",
+              height: i === index ? "14px" : "10px",
+              borderRadius: "50%",
+              cursor: "pointer",
+              background: i === index ? "#ff6347" : "rgba(255,255,255,0.5)",
+              border: "2px solid #fff",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
-
