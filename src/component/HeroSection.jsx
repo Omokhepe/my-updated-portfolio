@@ -58,7 +58,7 @@ const HeroSection = () => {
 
         <div className="workExperience">
           {workExperience.map((job, i) => (
-            <WorkExperience job={job} />
+            <WorkExperience key={i} job={job} />
           ))}
         </div>
       </div>

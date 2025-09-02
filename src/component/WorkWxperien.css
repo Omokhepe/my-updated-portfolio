@@ -5,7 +5,7 @@
 }
 
 .job {
-  border-bottom: 1px solid var(--cream);
+  border-bottom: 1px solid var(--primary-text);
   padding: 8px 0;
 }
 
@@ -14,7 +14,7 @@
   flex-direction: column;
   gap: 6px;
   cursor: pointer;
-  padding: 8px 0;
+  padding: 12px 0;
   background-color: transparent;
   border: none;
   width: 100%;
@@ -33,10 +33,13 @@
   /*font-weight: bold;*/
   margin: 0;
 }
+.up-down{
+    color: var(--mute-text);
+}
 
 .job-meta {
   /*font-size: 0.9rem;*/
-  color: var(--darkMute);
+  color: var(--mute-text);
   text-align: left;
 }
 

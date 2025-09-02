@@ -11,38 +11,73 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --colorBlack: #151515;
-  --colorGreen: #4ee1a0;
-  --colorAsh: #242424;
-  --colorGrey: #d9d9d9;
-  /*--colorWhite: #FFFFFF;*/
-  --primary: #11998e;
-  --secondary: #38ef7d;
-  --white: #fff;
-  --gray: #9b9b9b;
+  color: var(--mute-text);
 
-  --deep-steel: #2c3e50;
-  --plum: #673147;
-  --dark-gray: #1e1e1e;
-  --dark-charcoal: #2a2a2a;
-  --artichoke: #8f9779;
-  --crimson: #a61c3c;
-  --off-white: #f5f5f5;
-  --cream: #fad7a0;
 
-  /*Dark text color*/
-  --colorWhite: #ffffff;
-  --darkSecondary: #d1d5db;
-  --darkMute: #9ca3af;
+    --primary-bg: #F8F9FA;
+    --sec-bg: #673147;
+    --sub-bg:#FFF7E9;
+    --primary-text: #2C3E50;
+    --heading: #4D96FF;
+    --sec-text: #5D6D7E;
+    --nav-text: #2C3E50;
+    --contact-bg: #F0F2F5;
+    --btn-bg: #2C3E50;
+    --border-color: #673147;
+    --sec-btn: #2C3E50;
+    --box-shadow: rgba(0, 0, 0, 0.16);
+    --header-bot: #4D96FF;
 
-  --darkAccent: #a855f7;
-  --darkCallToAction: #f59e0b;
-  --darkBtnPrimary: #2563eb;
-  --darkBtnSecondary: #4b5563;
-  --darkBtnHover: #1d4ed8;
-  --softCream: #f2e9e4;
 
-  color: var(--darkSecondary);
+    --dark-charcoal: #2a2a2a;
+    --accent-color: #8f9779;
+    --crimson: #a61c3c;
+    --off-white: #f5f5f5;
+    /*--primary-text: #fad7a0;*/
+    --colorWhite: #ffffff;
+    --darkSecondary: #d1d5db;
+    --colorGrey: #d9d9d9;
+    /*--gray: #9b9b9b;*/
+    --mute-text: #9ca3af;
+
+
+
+}
+[data-theme="dark"] {
+    /*--primary-bg: #f5f5f5;*/
+    /*--sec-bg: #673147;*/
+    /*--sub-bg:#FFF7E9;*/
+    /*--accent-color: #8f9779;*/
+    /*--primary-text: #4D96FF;*/
+    /*--darkSecondary: var(--dark-charcoal);*/
+
+
+    --primary-bg: #2c3e50;
+    --sec-bg: #673147;
+    --sub-bg:#283f5b;
+    --primary-text: #fad7a0;
+    --heading: #d1d5db;
+    --sec-text: #d1d5db;
+    --nav-text: #d9d9d9;
+    --colorGrey: #d9d9d9;
+    --gray: #9b9b9b;
+    --contact-bg: #673147;
+    --btn-bg: #fad7a0;
+    --mute-text: #AAB7B8;
+    --border-color: #8f9779;
+    --sec-btn: #8f9779;
+    --header-bot: #8f9779;
+
+    /*--primary-text: #d9d9d9;*/
+
+    --dark-charcoal: #2a2a2a;
+    --accent-color: #8f9779;
+    --crimson: #a61c3c;
+    --off-white: #673147;
+    /*--primary-text: #fad7a0;*/
+    --colorWhite: var(--sec-bg);
+    --darkSecondary: #d1d5db;
+
 }
 
 /*a {*/

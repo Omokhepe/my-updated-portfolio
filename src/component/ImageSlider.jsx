@@ -314,6 +314,7 @@ export default function ImageSlider() {
 
   return (
     <div
+      // className="gallery"
       className="slider-carousel"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -322,8 +323,16 @@ export default function ImageSlider() {
       <img
         src={projects[index].image}
         alt="carousel"
+        // className="main-img"
         className="slider-carousel-img"
       />
+        {/*<a href={projects[index].site} target="_blank" className="overlay">*/}
+        {/*    <div className="overlay-content">*/}
+        {/*        <span className="material-symbols-outlined">link</span>*/}
+        {/*        <span className="text">View Project</span>*/}
+        {/*    </div>*/}
+        {/*</a>*/}
+        {/*<p className="textPreset1Med desc">{projects[mainIndex].description}</p>*/}
 
       {/* Controls */}
       <button onClick={prevSlide} className="img-carousel-prev">

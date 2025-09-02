@@ -16,12 +16,12 @@
   height: 70px;
   padding-top: 20px;
   transition: all 0.5s ease;
-  background-color: var(--deep-steel);
+  background-color: var(--primary-bg);
 }
 .navTitle {
   position: relative;
   text-decoration: none;
-  color: var(--colorGrey);
+  color: var(--nav-text);
 }
 .navTitle::before {
   content: "";
@@ -30,7 +30,7 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background: var(--deep-steel);
+  background: var(--primary-bg);
   animation: showRight 1s ease forwards;
   animation-delay: 0.4s;
 }
@@ -41,15 +41,15 @@
 .navLink a {
   margin-right: 48px;
   text-decoration: none;
-  color: var(--colorGrey);
+  color: var(--nav-text);
   transition: 0.3s;
 }
 .navLink.active {
-  color: var(--plum);
+  color: var(--sec-bg);
 }
 .navLink a:hover {
   transform: scale(1.1);
-  color: var(--cream);
+  color: var(--heading);
 }
 
 .navLabel span {
@@ -73,7 +73,7 @@
 }
 #mode-toggle span {
   position: absolute;
-  color: var(--cream);
+  color: var(--primary-text);
 }
 .menu-toggle {
   display: none;

@@ -1,5 +1,5 @@
 .chat-section {
-  background-color: var(--deep-steel);
+  background-color: var(--primary-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,8 +13,9 @@
   right: 5em;
   width: 26em;
   transform: scale(0.2);
-  background: var(--artichoke);
-  border-radius: 15px;
+  background: var(--off-white);
+    box-shadow: 0 8px 24px var(--box-shadow);
+    border-radius: 15px;
   transform-origin: bottom right;
 }
 .showChat .chatbox-popup {
@@ -32,14 +33,14 @@
   display: flex;
   cursor: pointer;
   border-radius: 50%;
-  background-color: var(--cream);
+  background: var(--heading);
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
 }
 #chatbot-toggle span {
   position: absolute;
-  color: var(--plum);
+  color: var(--sec-bg);
 }
 .showChat #chatbot-toggle {
   transform: rotate(90deg);
@@ -56,7 +57,7 @@
   padding: 15px 22px;
   align-items: center;
   justify-content: space-between;
-  background: var(--plum);
+  background: var(--header-bot);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -65,13 +66,16 @@
   gap: 10px;
   align-items: center;
 }
+.header-info h2{
+    color: var(--primary-text);
+}
 .header-info svg {
   height: 35px;
   width: 35px;
   padding: 5px;
   flex-shrink: 0;
-  fill: var(--plum);
-  background: var(--artichoke);
+  fill: var(--primary-text);
+  background: var(--off-white);
   border-radius: 50%;
 }
 .chatbox-header button {
@@ -79,7 +83,7 @@
   width: 40px;
   border: none;
   outline: none;
-  color: var(--artichoke);
+  color: var(--off-white);
   background: transparent;
   font-size: 1.9rem;
   padding-top: 2px;
@@ -89,7 +93,7 @@
   cursor: pointer;
 }
 .chatbox-header button:hover {
-  background: var(--crimson);
+  background: var(--primary-text);
 }
 .chat-body {
   display: flex;
@@ -100,13 +104,13 @@
   overflow-y: auto;
   padding: 25px 22px;
   scrollbar-width: thin;
-  scrollbar-color: var(--plum) transparent;
+  scrollbar-color: var(--sec-bg) transparent;
 }
 .flow-text {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  color: var(--cream);
+  color: var(--primary-text);
   display: inline-block;
   /*font-size: 2.5rem;*/
   font-weight: bold;
@@ -128,8 +132,8 @@
   width: 35px;
   padding: 5px;
   flex-shrink: 0;
-  fill: var(--artichoke);
-  background: var(--plum);
+  fill: var(--off-white);
+  background: var(--primary-text);
   border-radius: 50%;
   align-self: flex-end;
   margin-bottom: 2px;
@@ -144,8 +148,8 @@
   color: var(--crimson);
 }
 .bot-message .message-text {
-  background: var(--softCream);
-  color: var(--artichoke);
+  background: var(--mute-text);
+  color: var(--primary-text);
   border-radius: 13px 13px 13px 3px;
 }
 .user-message {
@@ -153,8 +157,8 @@
   align-items: flex-end;
 }
 .user-message .message-text {
-  color: var(--artichoke);
-  background: var(--plum);
+  color: var(--off-white);
+  background: var(--primary-text);
   border-radius: 13px 13px 3px 13px;
 }
 .chat-footer {
@@ -179,6 +183,7 @@
   height: 47px;
   border: none;
   background: transparent;
+    color: var(--primary-text);
   outline: none;
   padding: 0 17px;
 }
@@ -190,9 +195,9 @@
   width: 35px;
   flex-shrink: 0;
   display: none;
-  fill: var(--artichoke);
-  color: var(--artichoke);
-  background: var(--plum);
+  fill: var(--accent-color);
+  color: var(--accent-color);
+  background: var(--sec-bg);
   border-radius: 50%;
   margin-right: 6px;
   border: none;
@@ -208,7 +213,7 @@
 }
 
 .loader {
-  border: 3px solid var(--artichoke);
+  border: 3px solid var(--accent-color);
   margin: calc(4px * 3);
   border-radius: 50%;
 }

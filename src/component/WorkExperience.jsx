@@ -44,7 +44,7 @@ const WorkExperience = ({ job }) => {
             <h3 className="job-title textPresetBold">
               {job.role} | {job.company}
             </h3>
-            {isOpen ? <ChevronUp /> : <ChevronDown />}
+            {isOpen ? <ChevronUp className='up-down'/> : <ChevronDown className='up-down'/>}
           </div>
           <span className="job-meta textPreset1Med">
             {job.period} • {job.location}
