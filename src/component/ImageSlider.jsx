@@ -378,3 +378,30 @@ export default function ImageSlider() {
     </div>
   );
 }
+
+// import React from "react";
+// import "./ImageSlider.css";
+// import {projects} from "../constant/data.js";
+//
+// // const images = [
+// //     { src: "/img1.jpg", desc: "Beautiful Mountain View" },
+// //     { src: "/img2.jpg", desc: "Calm Ocean Waves" },
+// //     { src: "/img3.jpg", desc: "City Skyline at Night" },
+// //     { src: "/img4.jpg", desc: "Forest Pathway" },
+// // ];
+//
+// export default function ImageSlider() {
+//     return (
+//         <div className="slider">
+//             <div className="slide-track">
+//                 {projects.concat(projects).map((img, index) => (
+//                     <div className="slide" key={index}>
+//                         <img src={img.image} alt="slider" />
+//                         <div className="overlay">{img.desc}</div>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// }
+

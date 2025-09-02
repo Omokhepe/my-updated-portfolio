@@ -15,7 +15,16 @@ function ContactForm() {
   const [errors, setErrors] = useState({});
 
   // Regex to block malicious characters like <, >, {, }, script tags
-  const safeTextRegex = /^[a-zA-Z0-9 .,!?'"\-_\n\r]+$/;
+    function normalizeInput(str) {
+        return str
+            .replace(/[‘’]/g, "'")   // curly single → straight
+            .replace(/[“”]/g, '"');  // curly double → straight
+    }
+  const safeTextRegex = (msg) => {
+      const clean = normalizeInput(msg);
+      const regex = /^[a-zA-Z0-9 .,!?'"\-_\n\r]+$/;
+      return regex.test(clean);
+  };
 
   const validateField = (field, value) => {
     let error = "";
@@ -73,7 +82,7 @@ function ContactForm() {
     )
       return;
 
-    // Send message to YOU
+      // Send message to YOU
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -184,15 +193,6 @@ function ContactForm() {
           Send Message
         </button>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="colored"
-      />
     </>
   );
 }
