@@ -58,8 +58,8 @@
 
 #mode-toggle {
   position: fixed;
-  top: 10px;
-  right: 70px;
+  /*top: 10px;*/
+  right: 40%;
   border: none;
   height: 50px;
   width: 50px;
@@ -80,7 +80,7 @@
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #fff;
+  color: var(--nav-text);
   cursor: pointer;
 }
 
@@ -99,6 +99,9 @@
     width: 100%;
     background: #444;
   }
+    #mode-toggle {
+        right: 30%;
+    }
   .navLabel.active {
     position: fixed;
     top: 0;
@@ -111,7 +114,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-      background: rgba(44, 62, 80, 0.6); /* #2C3E50 with 60% opacity */
+      background: var(--side-nav);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
   }

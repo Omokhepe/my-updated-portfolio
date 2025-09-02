@@ -251,7 +251,7 @@
 
 @media (max-width: 768px) {
   .chatbox-popup {
-    bottom: 5em;
+    bottom: 9em;
     right: 3em;
     width: 20em;
   }
@@ -259,4 +259,8 @@
     gap: 1em;
     height: 12em;
   }
+    #chatbot-toggle {
+        bottom: 6em;
+        right: 3em;
+    }
 }

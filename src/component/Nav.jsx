@@ -33,6 +33,10 @@ const Nav = () => {
         <a href="/" className="navTitle textPresetBold">
           Omoh Imobu
         </a>
+          <button id="mode-toggle" className="theme-toggle" onClick={toggleTheme}>
+              {theme === 'light'?<span className="material-symbols-outlined">light_mode</span>:
+                  <span className="material-symbols-outlined">dark_mode</span>}
+          </button>
         <span
           className="material-symbols-outlined menu-toggle"
           onClick={() => setIsOpen((prevState) => !prevState)}
@@ -56,11 +60,6 @@ const Nav = () => {
             </li>
           ))}
         </ul>
-
-          <button id="mode-toggle" className="theme-toggle" onClick={toggleTheme}>
-              {theme === 'light'?<span className="material-symbols-outlined">light_mode</span>:
-              <span className="material-symbols-outlined">dark_mode</span>}
-          </button>
       </nav>
     </header>
   );
