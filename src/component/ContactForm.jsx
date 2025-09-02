@@ -50,7 +50,7 @@ function ContactForm() {
     if (field === "message") {
       if (!value.trim()) {
         error = "Message cannot be empty";
-      } else if (!safeTextRegex.test(value)) {
+      } else if (!safeTextRegex(value)) {
         error = "Message contains invalid or unsafe characters";
       }
     }
@@ -101,6 +101,7 @@ function ContactForm() {
       })
       .then(() => {
         // setStatus("✅ Message sent! Check your email.");
+          console.log('here')
         toast.success("Message sent! Check your email.");
         setForm({ from_name: "", reply_to: "", message: "", honeypot: "" });
       })
@@ -110,6 +111,7 @@ function ContactForm() {
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         );
+          console.log(error, 'there');
         // setStatus("❌ Failed to send, please try again.");
         toast.error("Something went wrong. Please try again.");
       });
