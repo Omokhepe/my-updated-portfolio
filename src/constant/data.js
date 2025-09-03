@@ -84,20 +84,20 @@ export const techStack = [
 ];
 
 export const projects = [
-  // {
-  //     id: 1,
-  //     title: 'Healthy Food App',
-  //     description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
-  //     site: 'https://healthy-recipe.vercel.app/',
-  //     image: healthMeal,
-  //     language: 'React.js, JavaScript',
-  // },
+  {
+      id: 1,
+      title: 'Healthy Food App',
+      description: "Healthy Food App is a service that provides easy to recreate healthy meal options, time of preparation and steps as well as instructions for users who are on the fitness lifestyle track",
+      site: 'https://healthy-recipe.vercel.app/',
+      image: healthMeal,
+      language: 'React.js, JavaScript',
+  },
   {
     id: 2,
     title: "Skilled e-learning Landing page",
     description:
       "This is a single page application that shows a sample landing page for e-learning, the application show cases some animations and css",
-    site: "/",
+    site: "",
     image: e_learning,
     language: "React.js, CSS",
   },
@@ -105,35 +105,35 @@ export const projects = [
     id: 3,
     title: "Simple Portfolio",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-    site: "/",
+    site: "",
     image: simpleEasyPortfolio,
   },
   {
     id: 4,
     title: "Movie streaminf",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-    site: "/",
+    site: "",
     image: movie_stream,
   },
   {
     id: 5,
     title: "To do app",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-    site: "/",
+    site: "",
     image: todo,
   },
   {
     id: 6,
     title: "Game",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-    site: "/",
+    site: "",
     image: game,
   },
   {
     id: 7,
     title: "Image SHow",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-    site: "/",
+    site: "",
     image: imagesShow,
   },
 ];

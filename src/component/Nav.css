@@ -73,7 +73,7 @@
 }
 #mode-toggle span {
   position: absolute;
-  color: var(--primary-text);
+  color: var(--mode-switch);
 }
 .menu-toggle {
   display: none;

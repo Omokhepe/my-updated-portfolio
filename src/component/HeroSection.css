@@ -239,15 +239,15 @@
 .stackList {
   width: 400px;
 }
-.carousel-wrapper {
+.stack-carousel-wrapper {
   overflow: hidden;
   width: 100%;
   position: relative;
   /*background: #f9f9f9; !* optional *!*/
   padding: 20px 0;
 }
-.carousel-wrapper::before,
-.carousel-wrapper::after {
+.stack-carousel-wrapper::before,
+.stack-carousel-wrapper::after {
   position: absolute;
   top: 0;
   /*left: 0;*/
@@ -257,7 +257,7 @@
   content: "";
   z-index: 2;
 }
-.carousel-wrapper::before {
+.stack-carousel-wrapper::before {
   left: 0;
   background: linear-gradient(
     to right,
@@ -265,7 +265,7 @@
     rgba(44, 62, 80, 0) 100%
   );
 }
-.carousel-wrapper::after {
+.stack-carousel-wrapper::after {
   right: 0;
   background: linear-gradient(
     to left,
@@ -274,20 +274,20 @@
   );
 }
 
-.carousel {
+.stack-carousel {
   display: flex;
   gap: 40px;
   animation: scroll 25s linear infinite;
 }
 
-.carousel-item {
+.stack-carousel-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 120px;
 }
 
-.carousel-item img {
+.stack-carousel-item img {
   width: 60px;
   height: 60px;
   object-fit: contain;

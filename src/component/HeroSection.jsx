@@ -45,12 +45,12 @@ const HeroSection = () => {
       </section>
 
       <div className="stack-section section">
-        <div className="carousel-wrapper">
-          <div className="carousel">
+        <div className="stack-carousel-wrapper">
+          <div className="stack-carousel">
             {[...skillStack, ...skillStack].map((skill, index) => (
-              <div className="carousel-item" key={index}>
+              <div className="stack-carousel-item" key={index}>
                 <img src={skill.image} alt={skill.stack} />
-                <p>{skill.stack}</p>
+                {/*<p>{skill.stack}</p>*/}
               </div>
             ))}
           </div>
