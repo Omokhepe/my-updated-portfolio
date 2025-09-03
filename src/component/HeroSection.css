@@ -342,10 +342,6 @@
   justify-content: space-between;
   /*margin: 50px auto;*/
 }
-/*.project-item{*/
-/*    !*display: flex;*!*/
-/*    !*width: 40%;*!*/
-/*}*/
 .projectImage {
   width: 650px;
 }
@@ -379,13 +375,6 @@
   margin-right: 9em;
     color: var(--sec-text);
 }
-
-/*.item{*/
-/*    width: 200px;*/
-/*    height: 100px;*/
-/*    background-color: var(--cream);*/
-/*    border-radius: 15px;*/
-/*}*/
 
 /*KEYFRAMES ANIMATION*/
 @keyframes showRight {
