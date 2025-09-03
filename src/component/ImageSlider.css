@@ -9,6 +9,7 @@
 .slide img {
     width: 100%;
     height: 100%;
+    border-radius: 12px;
     margin: 0 30px;
     object-fit: cover;
     transition: transform 0.3s ease;
