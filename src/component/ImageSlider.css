@@ -64,8 +64,17 @@
 
 /* Responsive tweak */
 @media (max-width: 768px) {
+    .swiper-wrapper {
+        width: 22em;
+    }
+    .swiper-button-prev:after, .swiper-button-next:after{
+        font-size: 30px;
+    }
+    /*.swiper-slide .swiper-slide-active{*/
+    /*    margin-right: 0;*/
+    /*}*/
     /*.slide img {*/
-    /*    height: 150px;*/
+    /*    height: 40%;*/
     /*}*/
 }
 
