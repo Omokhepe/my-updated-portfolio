@@ -43,6 +43,7 @@ export default function ImageSlider() {
                         <img src={item.image} alt={`slide-${i}`} />
                         <div className="overlay">
                             {item.description}
+                            <p className='textPreset1Med'>{item.language}</p>
                             {
                                 item.site !== '' && (
                                     <a href={item.site} target="_blank" className="view-project">

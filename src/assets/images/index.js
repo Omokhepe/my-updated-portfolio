@@ -7,6 +7,7 @@ import movie_stream from "./thumbnail-project-4-large.webp";
 import todo from "./thumbnail-project-3-large.webp";
 import game from "./thumbnail-project-5-large.webp";
 import imagesShow from "./thumbnail-project-6-large.webp";
+import product_cart from "./product-cart.jpg";
 
 export {
   profileImg,
@@ -18,4 +19,5 @@ export {
   game,
   imagesShow,
   down_arrow,
+    product_cart,
 };
